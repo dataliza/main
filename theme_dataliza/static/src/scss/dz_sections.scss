@@ -1,17 +1,15 @@
 // Home v2 sections: s_dz_stats, s_dz_features (images + industries), s_dz_trust.
-// Reuses the --dz-* tokens and dz- primitives from dataliza.scss. No rounded cards.
+// Reuses the --dz-* tokens and dz- primitives from dataliza.scss. Still the dark-terminal bands;
+// restyled to the light look in tranche 2 (S12). Neon glow already removed.
 
-$dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
-
-// ---- Shared: neon border on hover for cells with images / figures ----------
+// ---- Shared: raise the hovered cell so its border (brand green) is not covered ----------
 .s_dz_stats,
 .s_dz_features {
     .dz-cell {
-        transition: border-color .15s ease, box-shadow .25s ease;
+        transition: border-color .15s ease;
 
         &:hover {
             z-index: 1;
-            box-shadow: $dz-neon-glow;
         }
     }
 }
@@ -29,15 +27,14 @@ $dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
     // Count-up figure. tabular-nums keeps the width stable while the digits change.
     .s_dz_stats__num {
         margin: 0 0 .5rem;
-        font: 700 clamp(2rem, 3.4vw, 3rem)/1 var(--dz-mono);
+        font: 700 clamp(2rem, 3.4vw, 3rem)/1 var(--dz-font);
         font-variant-numeric: tabular-nums;
         color: var(--dz-accent);
-        text-shadow: 0 0 14px rgba(0, 255, 102, .45);
         white-space: nowrap;
     }
     .s_dz_stats__label {
         margin: 0;
-        font: 500 .75rem/1.5 var(--dz-mono);
+        font: 500 .75rem/1.5 var(--dz-font);
         letter-spacing: .06em;
         text-transform: uppercase;
         color: var(--dz-muted);
@@ -80,7 +77,7 @@ $dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
     }
     .s_dz_stats__badge-title {
         margin: 0;
-        font: 700 1.25rem/1.2 var(--dz-mono);
+        font: 700 1.25rem/1.2 var(--dz-font);
         background: linear-gradient(90deg, #f4f4f5, #a1a1aa 55%, #e4e4e7);
         -webkit-background-clip: text;
         background-clip: text;
@@ -116,15 +113,13 @@ $dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
             filter: saturate(.8) brightness(.8);
             transition: transform .6s ease, filter .3s ease;
         }
-        // Green tint + scanlines so every photo reads as one dark-tech family
+        // Brand-green tint so every photo reads as one dark-tech family
         &::after {
             content: '';
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background:
-                repeating-linear-gradient(to bottom, rgba(0, 0, 0, .18) 0, rgba(0, 0, 0, .18) 1px, transparent 1px, transparent 3px),
-                linear-gradient(to top, rgba(0, 255, 102, .14), transparent 55%);
+            background: linear-gradient(to top, rgba(92, 181, 49, .14), transparent 55%);
         }
     }
     .dz-cell:hover .s_dz_features__media img {
@@ -140,7 +135,7 @@ $dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
 
         p {
             margin: 0;
-            font: 500 .75rem/1.4 var(--dz-mono);
+            font: 500 .75rem/1.4 var(--dz-font);
             letter-spacing: .08em;
             text-transform: uppercase;
             color: var(--dz-text);
@@ -157,7 +152,6 @@ $dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
 
         &:hover {
             border-color: var(--dz-accent);
-            box-shadow: $dz-neon-glow;
         }
     }
     .s_dz_trust__photo {
@@ -182,7 +176,7 @@ $dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
         li {
             padding: .5rem 0;
             border-bottom: 1px solid var(--dz-line);
-            font: 500 .8125rem/1.4 var(--dz-mono);
+            font: 500 .8125rem/1.4 var(--dz-font);
             letter-spacing: .04em;
             color: var(--dz-text);
 

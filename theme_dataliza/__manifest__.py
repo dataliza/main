@@ -1,9 +1,9 @@
 {
     'name': 'Theme Dataliza',
-    'summary': 'Terminal-style dark theme for dataliza.mx: blueprint grid, ASCII hero, mono type.',
-    'description': 'Website theme for Dataliza (Odoo ERP consulting). Informative cyberpunk/code look.',
+    'summary': 'Light theme for dataliza.mx: black rounded hero card, white cells, Poppins, brand-green details.',
+    'description': 'Website theme for Dataliza (Odoo ERP consulting). Light editorial look (grey page, black hero card, giant Poppins titles).',
     'category': 'Theme/Corporate',
-    'version': '19.0.1.2.0',
+    'version': '19.0.1.3.0',
     'author': 'Dataliza',
     'license': 'LGPL-3',
     'depends': ['website'],

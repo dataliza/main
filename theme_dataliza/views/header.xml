@@ -16,7 +16,7 @@
             _navbar_name.f="Mobile">
             <div class="o_main_nav container flex-wrap justify-content-between">
                 <div class="d-flex flex-grow-1 align-items-center">
-                    <a href="/" class="navbar-brand dz-brand dz-cursor">dataliza</a>
+                    <a href="/" class="navbar-brand dz-brand">dataliza<span class="dz-brand__reg">®</span></a>
                 </div>
                 <button class="nav-link btn p-2 o_not_editable dz-header__toggler" type="button"
                     data-bs-toggle="offcanvas" data-bs-target="#top_menu_collapse_mobile"
@@ -70,32 +70,36 @@
                 <t t-set="_navbar_classes" t-valuef="dz-header d-none d-lg-block"/>
 
                 <div id="o_main_nav" t-attf-class="o_main_nav #{header_content_width}">
-                    <!-- Wordmark: 'dataliza' + the logo's green square as a blinking cursor -->
-                    <a href="/" class="navbar-brand dz-brand dz-cursor me-4">dataliza</a>
-                    <!-- Navigation (uppercase mono via .dz-header .nav-link) -->
-                    <t t-call="website.navbar_nav" _nav_class.f="me-auto">
+                    <!-- Wordmark 'dataliza®' (left) | plain Poppins links (centre) | black pill CTA (right).
+                         The two side blocks share the free space equally so the links stay centred. -->
+                    <div class="dz-header__side">
+                        <a href="/" class="navbar-brand dz-brand">dataliza<span class="dz-brand__reg">®</span></a>
+                    </div>
+                    <t t-call="website.navbar_nav" _nav_class.f="dz-header__nav justify-content-center">
                         <t t-foreach="website.menu_id.child_id" t-as="submenu">
                             <t t-call="website.submenu"
                                 item_class.f="nav-item"
                                 link_class.f="nav-link"/>
                         </t>
                     </t>
-                    <ul class="navbar-nav align-items-center gap-2 flex-shrink-0 justify-content-end ps-3">
-                        <t t-call="website.placeholder_header_language_selector"
-                            _btn_class.f="nav-link"
-                            _dropdown_menu_class.f="dropdown-menu-end"/>
-                        <t t-call="portal.placeholder_user_sign_in"
-                            _link_class.f="nav-link o_nav_link_btn border px-3"/>
-                        <t t-call="portal.user_dropdown"
-                            _user_name="True"
-                            _item_class.f="dropdown"
-                            _link_class.f="nav-link border-0"
-                            _dropdown_menu_class.f="dropdown-menu-end"/>
-                        <!-- Neon CTA -->
-                        <li class="nav-item">
-                            <a href="/contactanos" class="btn btn-primary dz-header__cta">Contáctanos</a>
-                        </li>
-                    </ul>
+                    <div class="dz-header__side dz-header__side--end">
+                        <ul class="navbar-nav align-items-center gap-2 flex-shrink-0 justify-content-end ps-3">
+                            <t t-call="website.placeholder_header_language_selector"
+                                _btn_class.f="nav-link"
+                                _dropdown_menu_class.f="dropdown-menu-end"/>
+                            <t t-call="portal.placeholder_user_sign_in"
+                                _link_class.f="nav-link o_nav_link_btn border px-3"/>
+                            <t t-call="portal.user_dropdown"
+                                _user_name="True"
+                                _item_class.f="dropdown"
+                                _link_class.f="nav-link border-0"
+                                _dropdown_menu_class.f="dropdown-menu-end"/>
+                            <!-- Black pill CTA -->
+                            <li class="nav-item">
+                                <a href="/contactanos" class="btn btn-primary dz-header__cta">Contáctanos</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </t>
             <t t-call="theme_dataliza.dz_header_mobile"/>

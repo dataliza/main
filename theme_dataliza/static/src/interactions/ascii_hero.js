@@ -1,24 +1,28 @@
 import { Interaction } from "@web/public/interaction";
 import { registry } from "@web/core/registry";
 
-// ASCII plasma for the s_dz_ascii_hero snippet. Decorative only: the heading, text and
-// buttons live in the DOM above the canvas, nothing readable is ever drawn in it.
+// ASCII plasma for the s_dz_ascii_hero snippet (S12: a very faint layer inside the black hero card).
+// Decorative only: the wordmark, text and buttons live in the DOM above the canvas, nothing readable
+// is ever drawn in it. Muted white/grey-green glyphs, no glow, no scanlines.
 
 const RAMP = [".", ":", "-", "=", "+", "*", "#", "@"];
-const NEON = "0, 255, 102"; // #00FF66
+const TINT = "196, 214, 196"; // muted white / grey-green
 const CELL_W = 10; // css px per glyph cell
 const CELL_H = 16;
 const FONT_SIZE = 13;
-const FONT_FAMILY = "'JetBrains Mono', ui-monospace, monospace";
+const FONT_FAMILY = "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace";
 const FRAME_MS = 1000 / 30; // cap at ~30fps
 const STATIC_TIME = 2.4; // time used for the single reduced-motion frame
-const MAX_ALPHA = 0.62; // keep the heading readable on top of the brightest glyphs
-const GLOW_FROM = 5; // ramp index from which glyphs get the phosphor glow
+const MIN_ALPHA = 0.03;
+const MAX_ALPHA = 0.14; // very faint: the wordmark and text must stay crisp on top
+const TIME_SCALE = 0.45; // slow drift
 
 export class AsciiHero extends Interaction {
     static selector = ".s_dz_ascii_hero";
 
     setup() {
+        // The plasma fills the black card (not the whole section, which has the grey page around it).
+        this.host = this.el.querySelector(".s_dz_ascii_hero__card") || this.el;
         this.canvas = this.el.querySelector(".s_dz_ascii_hero__canvas");
         this.ctx = null;
         this.rafId = 0;
@@ -45,7 +49,7 @@ export class AsciiHero extends Interaction {
             this.canvas = document.createElement("canvas");
             this.canvas.classList.add("s_dz_ascii_hero__canvas");
             this.canvas.setAttribute("aria-hidden", "true");
-            this.insert(this.canvas, this.el, "afterbegin");
+            this.insert(this.canvas, this.host, "afterbegin");
         }
         this.ctx = this.canvas.getContext("2d");
         if (!this.ctx) {
@@ -59,7 +63,7 @@ export class AsciiHero extends Interaction {
             this.visible = entries[entries.length - 1].isIntersecting;
             this.updateLoop();
         });
-        this.observer.observe(this.el);
+        this.observer.observe(this.host);
         this.updateLoop();
     }
 
@@ -126,7 +130,7 @@ export class AsciiHero extends Interaction {
             return;
         }
         this.lastFrame = now;
-        this.draw(now / 1000);
+        this.draw((now / 1000) * TIME_SCALE);
     }
 
     onMotionPreferenceChange() {
@@ -155,8 +159,8 @@ export class AsciiHero extends Interaction {
     // -------------------------------------------------------------------------
 
     resize() {
-        const width = this.el.clientWidth;
-        const height = this.el.clientHeight;
+        const width = this.host.clientWidth;
+        const height = this.host.clientHeight;
         this.dpr = window.devicePixelRatio || 1;
         this.canvas.width = Math.max(1, Math.round(width * this.dpr));
         this.canvas.height = Math.max(1, Math.round(height * this.dpr));
@@ -197,20 +201,13 @@ export class AsciiHero extends Interaction {
             }
         }
 
-        // 2. Draw level by level so fillStyle / shadow only change once per glyph.
+        // 2. Draw level by level so fillStyle only changes once per glyph.
         ctx.font = `${FONT_SIZE}px ${FONT_FAMILY}`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         for (let level = 0; level <= top; level++) {
-            const alpha = 0.1 + (level / top) * (MAX_ALPHA - 0.1);
-            ctx.fillStyle = `rgba(${NEON}, ${alpha.toFixed(3)})`;
-            if (level >= GLOW_FROM) {
-                ctx.shadowColor = `rgba(${NEON}, 0.85)`;
-                ctx.shadowBlur = 6;
-            } else {
-                ctx.shadowColor = "transparent";
-                ctx.shadowBlur = 0;
-            }
+            const alpha = MIN_ALPHA + (level / top) * (MAX_ALPHA - MIN_ALPHA);
+            ctx.fillStyle = `rgba(${TINT}, ${alpha.toFixed(3)})`;
             const glyph = RAMP[level];
             for (let row = 0; row < rows; row++) {
                 for (let col = 0; col < cols; col++) {
@@ -220,8 +217,6 @@ export class AsciiHero extends Interaction {
                 }
             }
         }
-        ctx.shadowBlur = 0;
-        ctx.shadowColor = "transparent";
     }
 }
 

@@ -2,122 +2,137 @@
 // dz- primitives from dataliza.scss. All rules are scoped to .dz-header / .dz-footer, so other
 // header/footer templates are untouched.
 
-// ---- Header ---------------------------------------------------------------
+$dz-brand: #5cb531;
+$dz-ink: #0a0a0a;
+$dz-toggler-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a0a0a' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 8h16M4 16h16'/%3E%3C/svg%3E");
+
+// ---- Header (S12: light, simple bar) ---------------------------------------
 .navbar.dz-header,
 .navbar.dz-header.o_cc {
-    background-color: var(--dz-bg);
-    color: var(--dz-text);
-    border-bottom: 1px solid var(--dz-line);
+    background-color: #f4f4f2;
+    color: $dz-ink;
+    border: 0;
     box-shadow: none;
+    padding-block: 1rem;
 
     .dz-brand {
-        font: 700 1.25rem/1 var(--dz-mono);
-        letter-spacing: -.02em;
+        font: 600 1.5rem/1 var(--dz-font);
+        letter-spacing: -.04em;
         text-transform: lowercase;
-        color: var(--dz-text);
+        color: $dz-ink;
         text-decoration: none;
+        margin-right: 0;
+    }
+    .dz-brand__reg {
+        font-size: .5em;
+        font-weight: 500;
+        letter-spacing: 0;
+        margin-left: .1em;
+        vertical-align: super;
+    }
+
+    // Left / right sides take equal space so the links sit truly centred
+    .dz-header__side {
+        flex: 1 1 0;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+    }
+    .dz-header__side--end {
+        justify-content: flex-end;
     }
 
     .nav-link {
-        font: 500 .75rem/1 var(--dz-mono);
-        letter-spacing: .12em;
-        text-transform: uppercase;
-        color: var(--dz-muted);
-        border-radius: 0;
-        transition: color .15s ease, box-shadow .15s ease;
+        position: relative;
+        font: 500 .9375rem/1 var(--dz-font);
+        color: rgba(10, 10, 10, .65);
+        padding: .5rem 1rem;
+        transition: color .15s ease;
 
         &:hover,
         &:focus-visible,
         &.active {
-            color: var(--dz-accent);
+            color: $dz-ink;
+        }
+        // Active page: small brand-green dot under the link
+        &.active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -.1rem;
+            width: 6px;
+            height: 6px;
+            margin-left: -3px;
+            border-radius: 50%;
+            background: $dz-brand;
         }
     }
 
-    // Underline marker on the desktop navigation only
-    .top_menu > .nav-item > .nav-link {
-        box-shadow: inset 0 -2px 0 transparent;
-
-        &:hover {
-            box-shadow: inset 0 -2px 0 var(--dz-accent);
-        }
-        // Active page: lit like a neon tube (neon text + glowing underline)
-        &.active {
-            text-shadow: 0 0 8px rgba(0, 255, 102, .65), 0 0 18px rgba(0, 255, 102, .35);
-            box-shadow: inset 0 -2px 0 var(--dz-accent), 0 8px 14px -8px rgba(0, 255, 102, .85);
-        }
-    }
-
+    // Black pill CTA; brand green on hover (colours come from .btn.btn-primary in dataliza.scss)
     .dz-header__cta {
-        font: 700 .75rem/1 var(--dz-mono);
-        letter-spacing: .12em;
-        text-transform: uppercase;
-        border-radius: 0;
-        background-color: var(--dz-accent);
-        border-color: var(--dz-accent);
-        color: #000;
-        // Neon glow
-        box-shadow: 0 0 24px -4px rgba(0, 255, 102, .45);
-        transition: box-shadow .2s ease, background-color .15s ease, color .15s ease;
-
-        &:hover,
-        &:focus-visible {
-            background-color: transparent;
-            color: var(--dz-accent);
-            box-shadow: 0 0 32px -2px rgba(0, 255, 102, .8), inset 0 0 12px -4px rgba(0, 255, 102, .6);
-        }
+        font: 500 .9375rem/1 var(--dz-font);
+        padding: .75rem 1.5rem;
     }
 
     .dz-header__toggler,
     .navbar-toggler {
-        color: var(--dz-text);
-        border-color: var(--dz-line-strong);
-        border-radius: 0;
+        color: $dz-ink;
+        border: 0;
     }
     .navbar-toggler-icon {
-        filter: invert(1);
+        background-image: $dz-toggler-icon;
+        background-size: 100%;
+        background-repeat: no-repeat;
     }
 
     .dropdown-menu {
-        background-color: var(--dz-bg-cell);
-        border: 1px solid var(--dz-line);
-        border-radius: 0;
+        background-color: #fff;
+        border: 1px solid rgba(10, 10, 10, .08);
+        border-radius: 16px;
+        padding: .5rem;
 
         .dropdown-item {
-            font: 500 .75rem/1.4 var(--dz-mono);
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            color: var(--dz-muted);
+            font: 500 .9375rem/1.4 var(--dz-font);
+            color: rgba(10, 10, 10, .65);
+            border-radius: 10px;
 
             &:hover,
             &:focus {
-                background-color: transparent;
-                color: var(--dz-accent);
+                background-color: #f4f4f2;
+                color: $dz-ink;
             }
         }
     }
 
     // Mobile offcanvas
     .offcanvas {
-        background-color: var(--dz-bg);
-        color: var(--dz-text);
-        border-left: 1px solid var(--dz-line);
+        background-color: #fff;
+        color: $dz-ink;
+        border-left: 0;
 
-        .nav-item {
-            border-color: var(--dz-line) !important;
+        .nav-link {
+            font-size: 1.25rem;
+            font-weight: 500;
+            padding: 1rem;
+
+            &.active::after {
+                left: 1rem;
+                bottom: auto;
+                top: 50%;
+                margin: -3px 0 0 -.9rem;
+            }
         }
-        .btn-close {
-            filter: invert(1);
+        .nav-item {
+            border-color: rgba(10, 10, 10, .08) !important;
         }
     }
 }
 
-// ---- Footer ---------------------------------------------------------------
+// ---- Footer (stays dark until tranche 2) ------------------------------------
 .dz-footer {
-    border-top: 1px solid var(--dz-line);
-
-    // .dz-dark also colours links neon; footer links stay muted until hover
+    // .dz-dark also colours links brand-green; footer links stay muted until hover
     &.dz-dark a:not(.btn) {
-        font: 400 .875rem/1.9 var(--dz-mono);
+        font: 400 .9375rem/1.9 var(--dz-font);
         color: var(--dz-muted);
         text-decoration: none;
         transition: color .15s ease;
@@ -129,8 +144,8 @@
     }
 
     .dz-footer__brand {
-        font: 700 1.75rem/1 var(--dz-mono);
-        letter-spacing: -.02em;
+        font: 600 1.75rem/1 var(--dz-font);
+        letter-spacing: -.04em;
         color: var(--dz-text);
         margin-bottom: .75rem;
     }

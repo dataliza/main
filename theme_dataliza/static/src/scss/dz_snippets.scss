@@ -1,6 +1,5 @@
-// Dataliza snippets: s_dz_ascii_hero, s_dz_features, s_dz_steps, s_dz_cta.
-// They reuse the dz- primitives (.dz-dark, .dz-cell, .dz-marks, .dz-label, .dz-num, .dz-cursor)
-// from dataliza.scss; no rounded cards, hover border goes neon (.dz-cell:hover).
+// Dataliza snippets: s_dz_ascii_hero (S12 black rounded card), s_dz_features, s_dz_steps, s_dz_cta.
+// Tokens and primitives (.dz-dark, .dz-light, .dz-card, .dz-label, ...) live in dataliza.scss.
 
 // Shared: headings/links inside a dark Dataliza surface must not pick the light theme colours.
 .dz-dark {
@@ -16,37 +15,59 @@
     a:not(.btn) {
         color: var(--dz-accent);
     }
-    .btn-primary {
-        color: #000;
-        // Neon glow, stronger on hover
-        box-shadow: 0 0 24px -4px rgba(0, 255, 102, .45);
-        transition: box-shadow .2s ease, background-color .15s ease, color .15s ease;
-
-        &:hover,
-        &:focus-visible {
-            box-shadow: 0 0 34px -2px rgba(0, 255, 102, .8), 0 0 10px rgba(0, 255, 102, .35);
-        }
-    }
-    .btn-outline-secondary {
-        color: var(--dz-text);
-        border-color: var(--dz-line-strong);
-
-        &:hover {
-            color: #000;
-            background-color: var(--dz-accent);
-            border-color: var(--dz-accent);
-        }
-    }
 }
 
 // ---- s_dz_ascii_hero ------------------------------------------------------
-.s_dz_ascii_hero {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    background-color: var(--dz-bg);
+// Section > .container > black rounded card. Four corners on a grid: wordmark (top-left),
+// services (top-right), tagline (bottom-left), white contact card (bottom-right).
+$dz-hero-radius: 24px;
+$dz-hero-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+$dz-hero-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13'%3E%3Cpath d='M6.5 0v13M0 6.5h13' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E");
 
-    // Plasma canvas: decorative layer behind the content
+.s_dz_ascii_hero {
+    .s_dz_ascii_hero__card {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas: "brand" "services" "tagline" "contact";
+        gap: 1.75rem;
+        min-height: 560px;
+        padding: clamp(1.5rem, 3vw, 2.75rem);
+        border-radius: $dz-hero-radius;
+        background-color: #0a0a0a;
+        color: #fff;
+
+        // Grain: tiny inline SVG noise (no image download), very low opacity
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image: $dz-hero-grain;
+            background-size: 160px 160px;
+            opacity: .1;
+            mix-blend-mode: screen;
+        }
+        // Faint "+" registration marks
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image: $dz-hero-plus, $dz-hero-plus, $dz-hero-plus, $dz-hero-plus;
+            background-repeat: no-repeat;
+            background-size: 13px 13px;
+            background-position: 22% 24%, 78% 24%, 22% 76%, 78% 76%;
+            opacity: .22;
+        }
+    }
+
+    // ASCII plasma: very faint decorative layer behind the content
     .s_dz_ascii_hero__canvas {
         position: absolute;
         top: 0;
@@ -57,54 +78,133 @@
         pointer-events: none;
     }
 
-    // Subtle scanlines + readability vignette over the canvas
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background:
-            repeating-linear-gradient(to bottom, rgba(0, 0, 0, .22) 0, rgba(0, 0, 0, .22) 1px, transparent 1px, transparent 3px),
-            radial-gradient(ellipse at 30% 50%, rgba(10, 10, 10, .7) 0%, rgba(10, 10, 10, 0) 70%);
-    }
-
-    // Neon title: glow stays soft so the white text remains readable over the plasma
-    h1 {
-        text-shadow:
-            0 0 6px rgba(0, 255, 102, .5),
-            0 0 22px rgba(0, 255, 102, .35),
-            0 0 48px rgba(0, 255, 102, .2);
-        animation: dz-neon-pulse 4s ease-in-out infinite alternate;
-    }
-
-    // Heading, text and buttons stay in the DOM, above the canvas
-    .s_dz_ascii_hero__content {
+    // All content sits above the canvas / grain / marks
+    .s_dz_ascii_hero__brand,
+    .s_dz_ascii_hero__services,
+    .s_dz_ascii_hero__tagline,
+    .s_dz_ascii_hero__contact {
         position: relative;
         z-index: 2;
-        max-width: 56rem;
+    }
+
+    .s_dz_ascii_hero__brand { grid-area: brand; }
+    .s_dz_ascii_hero__services { grid-area: services; }
+    .s_dz_ascii_hero__tagline { grid-area: tagline; align-self: end; }
+    .s_dz_ascii_hero__contact { grid-area: contact; }
+
+    // Huge white wordmark
+    .s_dz_ascii_hero__wordmark {
+        margin: 0;
+        font-family: var(--dz-font);
+        font-size: clamp(3rem, 17vw, 8rem);
+        font-weight: 600;
+        letter-spacing: -.055em;
+        line-height: .9;
+        color: #fff;
+        text-transform: lowercase;
+    }
+    .s_dz_ascii_hero__reg {
+        font-size: .2em;
+        font-weight: 500;
+        letter-spacing: 0;
+        vertical-align: top;
+        margin-left: .15em;
+        position: relative;
+        top: .35em;
+    }
+    // Small subtitle position, right under the wordmark
+    .s_dz_ascii_hero__sub {
+        margin: .9rem 0 0;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: -.01em;
+        color: rgba(255, 255, 255, .85);
+    }
+
+    // Services: small white text
+    .s_dz_ascii_hero__services {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: .9375rem;
+        line-height: 1.75;
+        color: #fff;
+
+        li {
+            color: #fff;
+            white-space: nowrap;
+        }
+    }
+
+    // Tagline + supporting sentence
+    .s_dz_ascii_hero__claim {
+        margin: 0;
+        font-size: clamp(1.75rem, 4.6vw, 3.25rem);
+        font-weight: 500;
+        letter-spacing: -.035em;
+        line-height: 1.02;
+        color: #fff;
+    }
+    .s_dz_ascii_hero__lead {
+        max-width: 28rem;
+        margin: 1rem 0 0;
+        font-size: .9375rem;
+        line-height: 1.55;
+        color: rgba(255, 255, 255, .6);
+    }
+
+    // White contact card
+    .s_dz_ascii_hero__contact {
+        width: 100%;
+        max-width: 19rem;
+        padding: 1.25rem 1.5rem 1.5rem;
+        border-radius: 16px;
+        background: #fff;
+
+        .dz-label {
+            margin: 0 0 .5rem;
+            color: var(--dz-muted);
+        }
+        p.s_dz_ascii_hero__contact-line {
+            margin: 0 0 1.25rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: -.02em;
+            line-height: 1.25;
+            color: var(--dz-text);
+        }
+        .btn {
+            padding: .6rem 1.4rem;
+            font-size: .875rem;
+        }
     }
 }
 
-@keyframes dz-neon-pulse {
-    from {
-        text-shadow:
-            0 0 5px rgba(0, 255, 102, .4),
-            0 0 18px rgba(0, 255, 102, .25),
-            0 0 40px rgba(0, 255, 102, .12);
+// Desktop: 2 columns x 3 rows, corners pinned
+@media (min-width: 992px) {
+    .s_dz_ascii_hero {
+        .s_dz_ascii_hero__card {
+            min-height: 640px;
+            grid-template-columns: minmax(0, 1fr) auto;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "brand services"
+                ". ."
+                "tagline contact";
+        }
+        .s_dz_ascii_hero__wordmark {
+            font-size: clamp(6rem, 12vw, 12.5rem);
+        }
+        .s_dz_ascii_hero__sub {
+            font-size: 1.125rem;
+        }
+        .s_dz_ascii_hero__services {
+            text-align: right;
+        }
+        .s_dz_ascii_hero__contact {
+            width: 19rem;
+        }
     }
-    to {
-        text-shadow:
-            0 0 8px rgba(0, 255, 102, .6),
-            0 0 26px rgba(0, 255, 102, .42),
-            0 0 56px rgba(0, 255, 102, .26);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    // Static glow, no pulse and no glow transitions
-    .s_dz_ascii_hero h1 { animation: none; }
-    .dz-dark .btn-primary { transition: none; }
 }
 
 // ---- s_dz_features / s_dz_steps / s_dz_cta ---------------------------------

@@ -1,28 +1,162 @@
-// Dataliza design tokens + blueprint primitives. Every component below is opt-in via a dz- class,
-// so editor-built pages keep working and blog/shop can stay light.
+// Dataliza design tokens + primitives (S12: light "fabrica" look). Every component below is opt-in
+// via a dz- class, so editor-built pages keep working.
+//
+// Tokens resolve per surface: :root = light page, .dz-dark = dark block (hero card, bands, footer),
+// .dz-light = a light island inside a dark block (e.g. the white contact card in the hero).
+
+$dz-brand: #5cb531;
+$dz-ink: #0a0a0a;
+$dz-radius: 20px;
+
+@mixin dz-tokens-light {
+    --dz-bg: #f4f4f2;
+    --dz-bg-cell: #ffffff;
+    --dz-line: rgba(10, 10, 10, .08);
+    --dz-line-strong: rgba(10, 10, 10, .2);
+    --dz-text: #{$dz-ink};
+    --dz-muted: #6b6b66;
+    --dz-btn-bg: #{$dz-ink};
+    --dz-btn-fg: #ffffff;
+}
 
 :root {
-    --dz-bg: #0a0a0a;
+    @include dz-tokens-light;
+    --dz-accent: #{$dz-brand};
+    --dz-brand: #{$dz-brand};
+    --dz-font: 'Poppins', sans-serif;
+    --dz-radius: #{$dz-radius};
+}
+
+// Dark surface scope: hero card and dark bands. Plain near-black, no dotted grid, no glow.
+.dz-dark {
+    --dz-bg: #{$dz-ink};
     --dz-bg-cell: #101010;
     --dz-line: #262626;
     --dz-line-strong: #3f3f46;
     --dz-text: #f5f5f5;
     --dz-muted: #a1a1aa;
-    --dz-accent: #00ff66;
-    --dz-brand: #5cb531;
-    --dz-mono: 'JetBrains Mono', ui-monospace, monospace;
-}
-
-// Dark surface scope (home and brand sections). Blog/shop simply do not use it.
-.dz-dark {
+    --dz-btn-bg: #ffffff;
+    --dz-btn-fg: #{$dz-ink};
     background-color: var(--dz-bg);
     color: var(--dz-text);
-    // Dotted blueprint grid
-    background-image: radial-gradient(var(--dz-line) 1px, transparent 1px);
-    background-size: 24px 24px;
 }
 
-// Thin-bordered cell; cells share borders instead of becoming separate rounded cards.
+// Light island inside a dark block
+.dz-light {
+    @include dz-tokens-light;
+    color: var(--dz-text);
+}
+
+// ---- Page foundation -------------------------------------------------------
+// The palette already makes o-color-4 the body colour; this pins it in case a saved
+// customisation overrides the palette.
+body,
+#wrapwrap {
+    background-color: #f4f4f2;
+    font-family: var(--dz-font);
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+// Big Poppins headings
+h1, h2 {
+    font-weight: 600;
+    letter-spacing: -.03em;
+    line-height: 1.02;
+}
+h1 { font-size: clamp(2.75rem, 6vw, 5rem); }
+h2 { font-size: clamp(2.25rem, 4.5vw, 3.75rem); }
+h3 {
+    font-weight: 600;
+    letter-spacing: -.02em;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+// Buttons: pill, black on light / white on dark; brand green only on hover
+.btn {
+    font-weight: 500;
+}
+.btn.btn-primary {
+    --bs-btn-color: var(--dz-btn-fg);
+    --bs-btn-bg: var(--dz-btn-bg);
+    --bs-btn-border-color: var(--dz-btn-bg);
+    --bs-btn-hover-color: #{$dz-ink};
+    --bs-btn-hover-bg: #{$dz-brand};
+    --bs-btn-hover-border-color: #{$dz-brand};
+    --bs-btn-active-color: #{$dz-ink};
+    --bs-btn-active-bg: #{$dz-brand};
+    --bs-btn-active-border-color: #{$dz-brand};
+    color: var(--dz-btn-fg);
+    background-color: var(--dz-btn-bg);
+    border-color: var(--dz-btn-bg);
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+        color: $dz-ink;
+        background-color: $dz-brand;
+        border-color: $dz-brand;
+    }
+}
+.btn.btn-outline-secondary {
+    color: var(--dz-text);
+    border-color: var(--dz-line-strong);
+    background-color: transparent;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+        color: $dz-ink;
+        background-color: $dz-brand;
+        border-color: $dz-brand;
+    }
+}
+
+// ---- Primitives ------------------------------------------------------------
+
+// White rounded card: soft hairline, no heavy border
+.dz-card {
+    background: #fff;
+    color: $dz-ink;
+    border: 1px solid rgba(10, 10, 10, .06);
+    border-radius: var(--dz-radius);
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+// Giant section title with a trailing brand-green dot: <h2 class="dz-title">Módulos</h2>
+.dz-title {
+    font-size: clamp(3rem, 9vw, 7.5rem);
+    font-weight: 600;
+    letter-spacing: -.045em;
+    line-height: .95;
+    margin-bottom: 0;
+
+    &::after {
+        content: '.';
+        color: var(--dz-brand);
+    }
+}
+
+// Small uppercase label (Poppins, not mono)
+.dz-label {
+    font: 500 .75rem/1.2 var(--dz-font);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--dz-muted);
+}
+.dz-num {
+    font: 600 clamp(2.5rem, 6vw, 5rem)/1 var(--dz-font);
+    letter-spacing: -.04em;
+    color: var(--dz-text);
+}
+
+// Thin-bordered cell (still used by the dark bands until tranche 2)
 .dz-cell {
     position: relative;
     border: 1px solid var(--dz-line);
@@ -41,37 +175,20 @@
     &::before, &::after {
         content: '+';
         position: absolute;
-        font: 500 14px/1 var(--dz-mono);
+        font: 500 14px/1 var(--dz-font);
         color: var(--dz-accent);
     }
     &::before { top: -8px; left: -4px; }
     &::after { bottom: -8px; right: -4px; }
 }
 
-// Uppercase micro label and big numbers
-.dz-label {
-    font: 500 .6875rem/1 var(--dz-mono);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--dz-muted);
-}
-.dz-num {
-    font: 700 clamp(2.5rem, 6vw, 5rem)/1 var(--dz-mono);
-    color: var(--dz-text);
-}
-
-// Brand square used as a blinking terminal cursor (the logo's green square)
+// Brand-green dot after a heading/wordmark (static; replaces the old blinking cursor)
 .dz-cursor::after {
     content: '';
     display: inline-block;
-    width: .5em;
-    height: .5em;
-    margin-left: .2em;
+    width: .26em;
+    height: .26em;
+    margin-left: .12em;
+    border-radius: 50%;
     background: var(--dz-brand);
-    animation: dz-blink 1.1s steps(1) infinite;
-}
-@keyframes dz-blink { 50% { opacity: 0; } }
-
-@media (prefers-reduced-motion: reduce) {
-    .dz-cursor::after { animation: none; }
 }

@@ -1,34 +1,42 @@
 // Primary variables: loaded before Bootstrap, so Odoo's palette/fonts pick them up.
-// Brand: Dataliza green (logo ~#5CB531) + neon accent #00FF66 (user choice).
+// S12 light "fabrica" look: light-grey page, near-black hero/dark blocks, Poppins everywhere,
+// brand green (#5CB531, from the logo) only in small details.
 
 $o-color-palettes: map-merge($o-color-palettes, (
-    'dataliza': o-make-palette(#00FF66, #5CB531, (
-        'menu': 5,
+    'dataliza': (
+        'o-color-1': #5CB531, // brand green (details, active marker, hover)
+        'o-color-2': #0A0A0A, // near-black (hero card, dark bands, primary button)
+        'o-color-3': #FFFFFF, // white (cells / cards)
+        'o-color-4': #F4F4F2, // page light grey (body background)
+        'o-color-5': #111111, // dark text / footer
+        'menu': 4,
         'footer': 5,
         'copyright': 5,
-    )),
+    ),
 ));
 
+// Google Fonts urls MUST use the comma format ('Poppins:400,500'); any other separator truncates the whole bundle.
 $o-theme-font-configs: map-merge($o-theme-font-configs, (
+    'Poppins': (
+        'family': ('Poppins', sans-serif),
+        'url': 'Poppins:400,500,600,700',
+    ),
+    // Kept defined (editor font list) but no longer used by the theme.
     'JetBrains Mono': (
         'family': ('JetBrains Mono', monospace),
         'url': 'JetBrains+Mono:400,500,700',
-    ),
-    'IBM Plex Sans': (
-        'family': ('IBM Plex Sans', sans-serif),
-        'url': 'IBM+Plex+Sans:400,500,600',
     ),
 ));
 
 $o-website-values-palettes: (
     (
         'color-palettes-name': 'dataliza',
-        'font': 'IBM Plex Sans',
-        'headings-font': 'JetBrains Mono',
-        'navbar-font': 'JetBrains Mono',
-        'buttons-font': 'JetBrains Mono',
-        'btn-border-radius': 0,
-        'btn-border-radius-sm': 0,
-        'btn-border-radius-lg': 0,
+        'font': 'Poppins',
+        'headings-font': 'Poppins',
+        'navbar-font': 'Poppins',
+        'buttons-font': 'Poppins',
+        'btn-border-radius': 50rem,
+        'btn-border-radius-sm': 50rem,
+        'btn-border-radius-lg': 50rem,
     ),
 );
