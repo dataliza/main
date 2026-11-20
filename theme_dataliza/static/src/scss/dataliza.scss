@@ -1,0 +1,77 @@
+// Dataliza design tokens + blueprint primitives. Every component below is opt-in via a dz- class,
+// so editor-built pages keep working and blog/shop can stay light.
+
+:root {
+    --dz-bg: #0a0a0a;
+    --dz-bg-cell: #101010;
+    --dz-line: #262626;
+    --dz-line-strong: #3f3f46;
+    --dz-text: #f5f5f5;
+    --dz-muted: #a1a1aa;
+    --dz-accent: #00ff66;
+    --dz-brand: #5cb531;
+    --dz-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+// Dark surface scope (home and brand sections). Blog/shop simply do not use it.
+.dz-dark {
+    background-color: var(--dz-bg);
+    color: var(--dz-text);
+    // Dotted blueprint grid
+    background-image: radial-gradient(var(--dz-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+// Thin-bordered cell; cells share borders instead of becoming separate rounded cards.
+.dz-cell {
+    position: relative;
+    border: 1px solid var(--dz-line);
+    background: var(--dz-bg-cell);
+    padding: 1.5rem;
+    margin: 0 -1px -1px 0;
+    transition: border-color .15s ease;
+
+    &:hover { border-color: var(--dz-accent); }
+}
+
+// "+" registration marks on the corners of an element
+.dz-marks {
+    position: relative;
+
+    &::before, &::after {
+        content: '+';
+        position: absolute;
+        font: 500 14px/1 var(--dz-mono);
+        color: var(--dz-accent);
+    }
+    &::before { top: -8px; left: -4px; }
+    &::after { bottom: -8px; right: -4px; }
+}
+
+// Uppercase micro label and big numbers
+.dz-label {
+    font: 500 .6875rem/1 var(--dz-mono);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dz-muted);
+}
+.dz-num {
+    font: 700 clamp(2.5rem, 6vw, 5rem)/1 var(--dz-mono);
+    color: var(--dz-text);
+}
+
+// Brand square used as a blinking terminal cursor (the logo's green square)
+.dz-cursor::after {
+    content: '';
+    display: inline-block;
+    width: .5em;
+    height: .5em;
+    margin-left: .2em;
+    background: var(--dz-brand);
+    animation: dz-blink 1.1s steps(1) infinite;
+}
+@keyframes dz-blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+    .dz-cursor::after { animation: none; }
+}

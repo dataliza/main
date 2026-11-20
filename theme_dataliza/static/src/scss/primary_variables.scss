@@ -1,0 +1,34 @@
+// Primary variables: loaded before Bootstrap, so Odoo's palette/fonts pick them up.
+// Brand: Dataliza green (logo ~#5CB531) + neon accent #00FF66 (user choice).
+
+$o-color-palettes: map-merge($o-color-palettes, (
+    'dataliza': o-make-palette(#00FF66, #5CB531, (
+        'menu': 5,
+        'footer': 5,
+        'copyright': 5,
+    )),
+));
+
+$o-theme-font-configs: map-merge($o-theme-font-configs, (
+    'JetBrains Mono': (
+        'family': ('JetBrains Mono', monospace),
+        'url': 'JetBrains+Mono:wght@400;500;700',
+    ),
+    'IBM Plex Sans': (
+        'family': ('IBM Plex Sans', sans-serif),
+        'url': 'IBM+Plex+Sans:wght@400;500;600',
+    ),
+));
+
+$o-website-values-palettes: (
+    (
+        'color-palettes-name': 'dataliza',
+        'font': 'IBM Plex Sans',
+        'headings-font': 'JetBrains Mono',
+        'navbar-font': 'JetBrains Mono',
+        'buttons-font': 'JetBrains Mono',
+        'btn-border-radius': 0,
+        'btn-border-radius-sm': 0,
+        'btn-border-radius-lg': 0,
+    ),
+);

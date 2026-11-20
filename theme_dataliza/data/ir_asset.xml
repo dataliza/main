@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- theme.ir.asset records are copied to ir.asset only for the website where the theme is installed. -->
+    <record id="primary_variables_scss" model="theme.ir.asset">
+        <field name="key">theme_dataliza.primary_variables_scss</field>
+        <field name="name">Dataliza primary variables SCSS</field>
+        <field name="bundle">web._assets_primary_variables</field>
+        <field name="path">theme_dataliza/static/src/scss/primary_variables.scss</field>
+    </record>
+    <record id="frontend_scss" model="theme.ir.asset">
+        <field name="key">theme_dataliza.frontend_scss</field>
+        <field name="name">Dataliza frontend SCSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/scss/dataliza.scss</field>
+    </record>
+</odoo>
