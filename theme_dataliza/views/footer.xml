@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!--
-        Dataliza footer (S12): a black rounded block inside the container, on the grey page.
+        Dataliza footer (S12, discreet per user L13): small wordmark, tagline and four compact link columns on the grey page, no black block.
         Shipped inactive: selected from the website editor (Footer > Template >
         Dataliza), which deactivates the other footer templates. Odoo's own copyright strip
         (o_footer_copyright) stays outside #footer and is restyled in dz_layout.scss, so no year
@@ -10,25 +10,22 @@
     <template id="template_footer_dataliza" inherit_id="website.layout" name="Template Footer Dataliza" active="False">
         <xpath expr="//div[@id='footer']" position="replace">
             <div id="footer" class="oe_structure oe_structure_solo text-break dz-footer" t-ignore="true" t-if="not no_footer">
-                <section class="s_text_block dz-footer__section pt32 pb16" data-snippet="s_text_block" data-name="Footer Dataliza">
+                <section class="s_text_block dz-footer__section pt48 pb16" data-snippet="s_text_block" data-name="Footer Dataliza">
                     <div class="container">
-                        <div class="dz-footer__block dz-dark">
-                            <div class="dz-footer__top">
+                        <div class="dz-footer__bar">
+                            <div class="dz-footer__intro">
                                 <p class="dz-footer__brand">dataliza<span class="dz-footer__reg">®</span></p>
-                                <div class="dz-footer__intro">
-                                    <p class="dz-footer__tagline">decide con datos, decide dataliza.</p>
-                                    <p class="dz-label">Business Intelligence</p>
-                                </div>
+                                <p class="dz-footer__tagline">decide con datos, decide dataliza.</p>
                             </div>
                             <div class="row g-4 dz-footer__cols">
-                                <div class="col-6 col-lg-3">
+                                <div class="col-6 col-md-3">
                                     <h5 class="dz-label dz-footer__title">Soluciones</h5>
                                     <ul class="list-unstyled">
                                         <li><a href="/soluciones">Soluciones</a></li>
                                         <li><a href="/sistema-de-nomina">Sistema de nómina</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-6 col-lg-3">
+                                <div class="col-6 col-md-3">
                                     <h5 class="dz-label dz-footer__title">Sistema ERP</h5>
                                     <ul class="list-unstyled">
                                         <li><a href="/sistema-erp">ERP</a></li>
@@ -37,7 +34,7 @@
                                         <li><a href="/sistema-erp">MRP</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-6 col-lg-3">
+                                <div class="col-6 col-md-3">
                                     <h5 class="dz-label dz-footer__title">Empresa &amp; Legal</h5>
                                     <ul class="list-unstyled">
                                         <li><a href="/blog">Blog</a></li>
@@ -45,14 +42,13 @@
                                         <li><a href="/terms">Términos y condiciones</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-6 col-lg-3">
+                                <div class="col-6 col-md-3">
                                     <h5 class="dz-label dz-footer__title">Contacto</h5>
                                     <ul class="list-unstyled">
                                         <li><a href="/contactanos">Contáctanos</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <p class="dz-footer__strip">dataliza® · Odoo Silver Partner · Oficinas en Tijuana y Guadalajara</p>
                         </div>
                     </div>
                 </section>

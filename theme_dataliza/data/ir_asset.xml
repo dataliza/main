@@ -49,4 +49,16 @@
         <field name="bundle">web.assets_frontend</field>
         <field name="path">theme_dataliza/static/src/interactions/dz_reveal.js</field>
     </record>
+    <record id="dz_pixel_cards_js" model="theme.ir.asset">
+        <field name="key">theme_dataliza.dz_pixel_cards_js</field>
+        <field name="name">Dataliza pixel hover cards interaction</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/interactions/dz_pixel_cards.js</field>
+    </record>
+    <record id="dz_industry_beam_js" model="theme.ir.asset">
+        <field name="key">theme_dataliza.dz_industry_beam_js</field>
+        <field name="name">Dataliza industry card beam interaction</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/interactions/dz_industry_beam.js</field>
+    </record>
 </odoo>
