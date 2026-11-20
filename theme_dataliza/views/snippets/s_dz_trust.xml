@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="s_dz_trust" name="Dataliza Trust">
-        <section class="s_dz_trust dz-dark pt96 pb96" data-snippet="s_dz_trust" data-name="Trust">
+        <section class="s_dz_trust pt48 pb48" data-snippet="s_dz_trust" data-name="Trust">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 pb32 s_dz_trust__reveal s_dz_trust__reveal--media">
-                        <div class="s_dz_trust__frame dz-marks">
-                            <img src="/theme_dataliza/static/src/img/dz/dz-equipo-reunion.webp" class="s_dz_trust__photo" alt="Equipo de trabajo reunido en una mesa, dándose la mano" loading="lazy" width="1600" height="1067"/>
-                            <img src="/theme_dataliza/static/src/img/dz/dz-equipo-union.webp" class="s_dz_trust__inset" alt="Manos de un equipo unidas sobre la mesa de trabajo" loading="lazy" width="900" height="600"/>
+                <div class="dz-card s_dz_trust__box">
+                    <div class="row g-4 g-lg-5">
+                        <div class="col-lg-6 s_dz_trust__col-media s_dz_trust__reveal s_dz_trust__reveal--media">
+                            <div class="s_dz_trust__media">
+                                <img src="/theme_dataliza/static/src/img/dz/dz-equipo-reunion.webp" class="s_dz_trust__photo" alt="Equipo de trabajo reunido en una mesa, dándose la mano" loading="lazy" width="1600" height="1067"/>
+                                <img src="/theme_dataliza/static/src/img/dz/dz-equipo-union.webp" class="s_dz_trust__inset" alt="Manos de un equipo unidas sobre la mesa de trabajo" loading="lazy" width="900" height="600"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 s_dz_trust__reveal s_dz_trust__reveal--text">
-                        <p class="dz-label">Confianza</p>
-                        <h2>Odoo Silver Partner en México</h2>
-                        <p class="lead">Implementamos Odoo desde 2020, con oficinas en Tijuana y Guadalajara.</p>
-                        <p>Somos Odoo Silver Partner y nos especializamos en la implementación de ERP y CRM para pymes, para que tengas la información de tu negocio en un solo lugar.</p>
-                        <ul class="list-unstyled s_dz_trust__list">
-                            <li>Odoo Silver Partner</li>
-                            <li>Implementando Odoo desde 2020</li>
-                            <li>Oficinas en Tijuana y Guadalajara</li>
-                            <li>Implementación de ERP y CRM para pymes</li>
-                        </ul>
-                        <p>
+                        <div class="col-lg-6 s_dz_trust__reveal s_dz_trust__reveal--text">
+                            <p class="dz-label">Confianza</p>
+                            <h2 class="dz-title dz-title--md">Odoo Silver Partner en México</h2>
+                            <p class="lead">Implementamos Odoo desde 2020, con oficinas en Tijuana y Guadalajara.</p>
+                            <p>Somos Odoo Silver Partner y nos especializamos en la implementación de ERP y CRM para pymes, para que tengas la información de tu negocio en un solo lugar.</p>
+                            <ul class="list-unstyled s_dz_trust__list">
+                                <li>Odoo Silver Partner</li>
+                                <li>Implementando Odoo desde 2020</li>
+                                <li>Oficinas en Tijuana y Guadalajara</li>
+                                <li>Implementación de ERP y CRM para pymes</li>
+                            </ul>
                             <a href="/contactanos" class="btn btn-lg btn-primary">Agenda una llamada</a>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>

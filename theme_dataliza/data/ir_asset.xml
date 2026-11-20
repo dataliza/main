@@ -33,7 +33,7 @@
     </record>
     <record id="sections_scss" model="theme.ir.asset">
         <field name="key">theme_dataliza.sections_scss</field>
-        <field name="name">Dataliza home sections SCSS (stats, features, trust)</field>
+        <field name="name">Dataliza home sections SCSS (stats, features, steps, trust)</field>
         <field name="bundle">web.assets_frontend</field>
         <field name="path">theme_dataliza/static/src/scss/dz_sections.scss</field>
     </record>

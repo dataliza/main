@@ -1,4 +1,4 @@
-// Dataliza snippets: s_dz_ascii_hero (S12 black rounded card), s_dz_features, s_dz_steps, s_dz_cta.
+// Dataliza dark-card snippets (S12): s_dz_ascii_hero and s_dz_cta, both black rounded cards.
 // Tokens and primitives (.dz-dark, .dz-light, .dz-card, .dz-label, ...) live in dataliza.scss.
 
 // Shared: headings/links inside a dark Dataliza surface must not pick the light theme colours.
@@ -20,7 +20,6 @@
 // ---- s_dz_ascii_hero ------------------------------------------------------
 // Section > .container > black rounded card. Four corners on a grid: wordmark (top-left),
 // services (top-right), tagline (bottom-left), white contact card (bottom-right).
-$dz-hero-radius: 24px;
 $dz-hero-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
 $dz-hero-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13'%3E%3Cpath d='M6.5 0v13M0 6.5h13' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E");
 
@@ -36,7 +35,7 @@ $dz-hero-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
         gap: 1.75rem;
         min-height: 560px;
         padding: clamp(1.5rem, 3vw, 2.75rem);
-        border-radius: $dz-hero-radius;
+        border-radius: var(--dz-radius-lg);
         background-color: #0a0a0a;
         color: #fff;
 
@@ -207,34 +206,28 @@ $dz-hero-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
     }
 }
 
-// ---- s_dz_features / s_dz_steps / s_dz_cta ---------------------------------
-.s_dz_features,
-.s_dz_steps,
+// ---- s_dz_cta -------------------------------------------------------------
+// Closing call to action: big black rounded card (same family as the hero).
 .s_dz_cta {
-    .dz-cell {
-        height: 100%;
+    .s_dz_cta__card {
+        padding: clamp(2rem, 6vw, 5rem);
+        border-radius: var(--dz-radius-lg);
+
+        .dz-label {
+            margin-bottom: 1.25rem;
+        }
     }
-    .dz-cell h3 {
-        font-size: 1.25rem;
-        margin: .75rem 0;
+    .s_dz_cta__title {
+        max-width: 16ch;
+        margin: 0 0 1.5rem;
+        font-size: clamp(2.25rem, 6vw, 5rem);
+        font-weight: 600;
+        letter-spacing: -.04em;
+        line-height: 1;
     }
-}
-
-.s_dz_features .dz-cell {
-    display: flex;
-    flex-direction: column;
-
-    // "Descubre más" link sticks to the bottom of the cell
-    > a {
-        margin-top: auto;
+    .s_dz_cta__lead {
+        margin: 0 0 2rem;
+        font-size: 1.125rem;
+        color: var(--dz-muted);
     }
-}
-
-.s_dz_steps .dz-num {
-    margin-bottom: .5rem;
-    color: var(--dz-accent);
-}
-
-.s_dz_cta .s_dz_cta__box {
-    padding: 3rem 1.5rem;
 }

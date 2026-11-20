@@ -25,6 +25,7 @@ $dz-radius: 20px;
     --dz-brand: #{$dz-brand};
     --dz-font: 'Poppins', sans-serif;
     --dz-radius: #{$dz-radius};
+    --dz-radius-lg: 24px; // big black blocks (hero, cta, footer)
 }
 
 // Dark surface scope: hero card and dark bands. Plain near-black, no dotted grid, no glow.
@@ -131,7 +132,7 @@ h3 {
 
 // Giant section title with a trailing brand-green dot: <h2 class="dz-title">Módulos</h2>
 .dz-title {
-    font-size: clamp(3rem, 9vw, 7.5rem);
+    font-size: clamp(2.25rem, 9vw, 7.5rem);
     font-weight: 600;
     letter-spacing: -.045em;
     line-height: .95;
@@ -156,39 +157,75 @@ h3 {
     color: var(--dz-text);
 }
 
-// Thin-bordered cell (still used by the dark bands until tranche 2)
-.dz-cell {
-    position: relative;
-    border: 1px solid var(--dz-line);
-    background: var(--dz-bg-cell);
-    padding: 1.5rem;
-    margin: 0 -1px -1px 0;
-    transition: border-color .15s ease;
-
-    &:hover { border-color: var(--dz-accent); }
+// Medium variant of the giant title (half-width columns)
+.dz-title--md {
+    font-size: clamp(2.25rem, 4.6vw, 4rem);
 }
 
-// "+" registration marks on the corners of an element
-.dz-marks {
-    position: relative;
+// Section head: giant title on the left, small muted paragraph on the right
+.dz-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem 3rem;
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.dz-head__intro {
+    max-width: 26rem;
+    margin: 0;
+    padding-bottom: .5rem;
+    font-size: .9375rem;
+    line-height: 1.6;
+    color: var(--dz-muted);
 
-    &::before, &::after {
-        content: '+';
-        position: absolute;
-        font: 500 14px/1 var(--dz-font);
-        color: var(--dz-accent);
+    .dz-label {
+        margin-bottom: .5rem;
     }
-    &::before { top: -8px; left: -4px; }
-    &::after { bottom: -8px; right: -4px; }
+}
+@media (min-width: 992px) {
+    .dz-head__intro {
+        text-align: right;
+    }
 }
 
-// Brand-green dot after a heading/wordmark (static; replaces the old blinking cursor)
-.dz-cursor::after {
-    content: '';
-    display: inline-block;
-    width: .26em;
-    height: .26em;
-    margin-left: .12em;
-    border-radius: 50%;
-    background: var(--dz-brand);
+// Small white rounded pill with a brand-green dot (e.g. "Oficinas en Tijuana y Guadalajara")
+.dz-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    margin: 0;
+    padding: .6rem 1.1rem;
+    border-radius: 50rem;
+    background: #fff;
+    font: 500 .875rem/1.3 var(--dz-font);
+    color: var(--dz-text);
+
+    &::before {
+        content: '';
+        flex: 0 0 auto;
+        width: .5rem;
+        height: .5rem;
+        border-radius: 50%;
+        background: var(--dz-brand);
+    }
+}
+
+// Gentle lift for interactive cards (no glow, soft grey shadow only)
+.dz-lift {
+    transition: transform .25s ease, box-shadow .25s ease;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 40px -26px rgba(10, 10, 10, .4);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .dz-lift {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
 }

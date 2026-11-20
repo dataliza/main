@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="s_dz_steps" name="Dataliza Steps">
-        <section class="s_dz_steps dz-dark pt64 pb64" data-snippet="s_dz_steps" data-name="Steps">
+        <section class="s_dz_steps pt64 pb64" data-snippet="s_dz_steps" data-name="Steps">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 pb32">
-                        <p class="dz-label">Metodología</p>
-                        <h2>Los datos, te hacen fuerte</h2>
+                <div class="dz-head">
+                    <h2 class="dz-title">Metodología</h2>
+                    <div class="dz-head__intro">
+                        <p class="dz-label">Los datos, te hacen fuerte</p>
                         <p>La transformación digital de tu negocio es posible y para ello, requieres de herramientas que te permitan tener acceso a la información de manera sencilla, conoce nuestra metodología para la implementación de odoo ERP y hazlo posible.</p>
                     </div>
                 </div>
-                <div class="row g-0">
-                    <div class="col-lg-6 s_dz_steps__col">
-                        <div class="dz-cell dz-marks h-100">
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="dz-card s_dz_steps__card h-100">
                             <p class="dz-num">01</p>
                             <h3>Análisis de Proyectos</h3>
                             <p>Con nuestra metodología de análisis de proyectos, nos permite identificar las principales necesidades de tu negocio, diseñando una implementación de tu odoo ERP de manera funcional y escalable en poco tiempo.</p>
-                            <a href="/contactanos" class="btn btn-outline-secondary">Contáctanos</a>
+                            <a href="/contactanos" class="btn btn-primary">Contáctanos</a>
                         </div>
                     </div>
-                    <div class="col-lg-6 s_dz_steps__col">
-                        <div class="dz-cell dz-marks h-100">
+                    <div class="col-lg-6">
+                        <div class="dz-card s_dz_steps__card h-100">
                             <p class="dz-num">02</p>
                             <h3>Implementación de odoo ERP</h3>
                             <p>En la actualidad, la transformación digital es necesaria en toda organización, contar con un odoo ERP te permitirá tener la información en un solo lugar y lo mejor, desde tu dispositivo móvil.</p>
-                            <a href="/contactanos" class="btn btn-outline-secondary">Contáctanos</a>
+                            <a href="/contactanos" class="btn btn-primary">Contáctanos</a>
                         </div>
                     </div>
                 </div>

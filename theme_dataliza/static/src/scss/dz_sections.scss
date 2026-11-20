@@ -1,54 +1,42 @@
-// Home v2 sections: s_dz_stats, s_dz_features (images + industries), s_dz_trust.
-// Reuses the --dz-* tokens and dz- primitives from dataliza.scss. Still the dark-terminal bands;
-// restyled to the light look in tranche 2 (S12). Neon glow already removed.
-
-// ---- Shared: raise the hovered cell so its border (brand green) is not covered ----------
-.s_dz_stats,
-.s_dz_features {
-    .dz-cell {
-        transition: border-color .15s ease;
-
-        &:hover {
-            z-index: 1;
-        }
-    }
-}
+// Home sections (S12 light look): s_dz_stats, s_dz_features, s_dz_steps, s_dz_trust.
+// White rounded cells (.dz-card) on the grey page; giant titles via .dz-head / .dz-title.
+// Tokens and primitives (.dz-card, .dz-head, .dz-chip, .dz-lift, .dz-label, .dz-num) live in dataliza.scss.
 
 // ---- s_dz_stats ----------------------------------------------------------
 .s_dz_stats {
-    .s_dz_stats__col .dz-cell {
-        height: 100%;
-    }
     .s_dz_stats__cell {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        height: 100%;
+        padding: 1.5rem 1.25rem;
     }
     // Count-up figure. tabular-nums keeps the width stable while the digits change.
     .s_dz_stats__num {
-        margin: 0 0 .5rem;
-        font: 700 clamp(2rem, 3.4vw, 3rem)/1 var(--dz-font);
+        margin: 0 0 .75rem;
+        font: 600 clamp(2.25rem, 3.6vw, 3.5rem)/1 var(--dz-font);
+        letter-spacing: -.04em;
         font-variant-numeric: tabular-nums;
-        color: var(--dz-accent);
+        color: var(--dz-text);
         white-space: nowrap;
     }
     .s_dz_stats__label {
         margin: 0;
-        font: 500 .75rem/1.5 var(--dz-font);
-        letter-spacing: .06em;
-        text-transform: uppercase;
+        font-size: .875rem;
+        line-height: 1.45;
         color: var(--dz-muted);
     }
 
-    // "Odoo Silver Partner" badge: CSS only (hexagon seal + silver text)
+    // "Odoo Silver Partner" seal: CSS only (black hexagon outline + star), no Odoo logo image
     .s_dz_stats__badge {
-        display: flex;
+        flex-direction: row;
         align-items: center;
-        gap: 1rem;
-        height: 100%;
+        justify-content: flex-start;
+        gap: 1.25rem;
+        padding: 1.5rem;
 
         .dz-label {
-            margin-bottom: .5rem;
+            margin-bottom: .35rem;
         }
     }
     .s_dz_stats__seal {
@@ -56,53 +44,45 @@
         flex: 0 0 auto;
         display: grid;
         place-items: center;
-        width: 3.5rem;
-        height: 4rem;
+        width: 3.75rem;
+        height: 4.25rem;
         clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-        background: linear-gradient(135deg, #f4f4f5, #868991 50%, #d4d4d8);
+        background: var(--dz-text);
 
         &::before {
             content: '';
             position: absolute;
-            inset: 2px;
+            inset: 3px;
             clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-            background: #0f0f10;
+            background: #fff;
         }
     }
     .s_dz_stats__star {
         position: relative;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         line-height: 1;
-        color: #d4d4d8;
+        color: var(--dz-text);
     }
     .s_dz_stats__badge-title {
         margin: 0;
-        font: 700 1.25rem/1.2 var(--dz-font);
-        background: linear-gradient(90deg, #f4f4f5, #a1a1aa 55%, #e4e4e7);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: #e4e4e7;
+        font: 600 clamp(1.25rem, 2vw, 1.5rem)/1.2 var(--dz-font);
+        letter-spacing: -.02em;
+        color: var(--dz-text);
     }
 }
 
-// ---- s_dz_features (images, industries) -----------------------------------
+// ---- s_dz_features (module cards + industries) ------------------------------
 .s_dz_features {
-    .s_dz_features__col .dz-cell {
+    // Photo on top with rounded top corners (the card clips it); gentle zoom on hover
+    .s_dz_features__card {
         display: flex;
-        flex-direction: column; // (no overflow:hidden here: it would clip the "+" corner marks)
-    }
-    .s_dz_features__body {
-        flex: 1 1 auto;
-    }
-
-    // Image bleeds to the cell edges; zoom on hover
-    .s_dz_features__media {
-        position: relative;
+        flex-direction: column;
+        padding: 0;
         overflow: hidden;
+    }
+    .s_dz_features__media {
         aspect-ratio: 3 / 2;
-        margin: -1.5rem -1.5rem 1.25rem;
-        border-bottom: 1px solid var(--dz-line);
+        overflow: hidden;
         background: var(--dz-bg);
 
         img {
@@ -110,80 +90,157 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(.8) brightness(.8);
-            transition: transform .6s ease, filter .3s ease;
-        }
-        // Brand-green tint so every photo reads as one dark-tech family
-        &::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: linear-gradient(to top, rgba(92, 181, 49, .14), transparent 55%);
+            transition: transform .6s ease;
         }
     }
-    .dz-cell:hover .s_dz_features__media img {
-        transform: scale(1.06);
-        filter: saturate(1) brightness(1);
+    .s_dz_features__card:hover .s_dz_features__media img {
+        transform: scale(1.05);
+    }
+    .s_dz_features__body {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem 1.5rem 1.5rem;
+
+        h3 {
+            margin: .5rem 0 .75rem;
+            font-size: 1.5rem;
+        }
+        p:not(.dz-label) {
+            margin-bottom: 1.5rem;
+            font-size: .9375rem;
+            line-height: 1.6;
+            color: var(--dz-muted);
+        }
+        .btn {
+            align-self: flex-start;
+            margin-top: auto;
+        }
     }
 
+    // Industries: white rounded chips
     .s_dz_features__industry {
         display: flex;
         align-items: center;
+        gap: .6rem;
         min-height: 4.5rem;
-        padding: 1rem;
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
 
+        &::before {
+            content: '';
+            flex: 0 0 auto;
+            width: .5rem;
+            height: .5rem;
+            border-radius: 50%;
+            background: var(--dz-brand);
+        }
         p {
             margin: 0;
-            font: 500 .75rem/1.4 var(--dz-font);
-            letter-spacing: .08em;
-            text-transform: uppercase;
+            font: 500 .9375rem/1.35 var(--dz-font);
             color: var(--dz-text);
+        }
+    }
+}
+
+// ---- s_dz_steps ----------------------------------------------------------
+.s_dz_steps {
+    .s_dz_steps__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+
+        .dz-num {
+            margin: 0 0 1.5rem;
+            font-size: clamp(4rem, 9vw, 7rem);
+        }
+        h3 {
+            margin-bottom: 1rem;
+            font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+        }
+        p:not(.dz-num) {
+            margin-bottom: 2rem;
+            line-height: 1.65;
+            color: var(--dz-muted);
+        }
+        .btn {
+            margin-top: auto;
         }
     }
 }
 
 // ---- s_dz_trust ----------------------------------------------------------
 .s_dz_trust {
-    .s_dz_trust__frame {
+    .s_dz_trust__box {
+        padding: clamp(1rem, 2.5vw, 1.75rem);
+    }
+    // Photo column stretches to the text column height; the photo covers it (no gap underneath)
+    .s_dz_trust__col-media {
+        display: flex;
+    }
+    .s_dz_trust__media {
         position: relative;
-        border: 1px solid var(--dz-line);
-        padding-bottom: 2.5rem; // room for the inset photo
-
-        &:hover {
-            border-color: var(--dz-accent);
-        }
+        flex: 1 1 auto;
+        min-height: 20rem;
+        border-radius: var(--dz-radius);
+        overflow: hidden;
+        background: var(--dz-bg);
     }
     .s_dz_trust__photo {
-        display: block;
+        position: absolute;
+        inset: 0;
         width: 100%;
-        height: auto;
-        filter: saturate(.85) brightness(.85);
+        height: 100%;
+        object-fit: cover;
     }
     .s_dz_trust__inset {
         position: absolute;
-        right: -1px;
-        bottom: -1px;
-        width: 42%;
-        height: auto;
-        border: 1px solid var(--dz-accent);
-        box-shadow: 0 0 0 6px var(--dz-bg);
+        right: 1rem;
+        bottom: 1rem;
+        width: 38%;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        border: 4px solid #fff;
+        border-radius: 16px;
+    }
+    .s_dz_trust__reveal--text {
+        padding: clamp(.5rem, 2vw, 2rem) clamp(.5rem, 2vw, 1.5rem);
+
+        .dz-label {
+            margin-bottom: 1rem;
+        }
+        .dz-title {
+            margin-bottom: 1.25rem;
+        }
+        p:not(.dz-label) {
+            color: var(--dz-muted);
+        }
+        p.lead {
+            color: var(--dz-text);
+            font-weight: 500;
+        }
     }
     .s_dz_trust__list {
         padding: 0;
-        margin: 1.5rem 0;
+        margin: 1.5rem 0 2rem;
 
         li {
-            padding: .5rem 0;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: .65rem 0;
             border-bottom: 1px solid var(--dz-line);
-            font: 500 .8125rem/1.4 var(--dz-font);
-            letter-spacing: .04em;
+            font-size: .9375rem;
             color: var(--dz-text);
 
             &::before {
-                content: '+';
-                margin-right: .75rem;
-                color: var(--dz-accent);
+                content: '';
+                flex: 0 0 auto;
+                width: .5rem;
+                height: .5rem;
+                border-radius: 50%;
+                background: var(--dz-brand);
             }
         }
     }
@@ -204,14 +261,18 @@
     }
 }
 
+@media (min-width: 992px) {
+    .s_dz_trust .s_dz_trust__media {
+        min-height: 30rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .s_dz_features .s_dz_features__media img,
-    .s_dz_features .dz-cell,
-    .s_dz_stats .dz-cell,
     .s_dz_trust .s_dz_trust__reveal {
         transition: none !important;
     }
-    .s_dz_features .dz-cell:hover .s_dz_features__media img {
+    .s_dz_features .s_dz_features__card:hover .s_dz_features__media img {
         transform: none;
     }
     .s_dz_trust.dz-reveal-ready .s_dz_trust__reveal {

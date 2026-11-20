@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- S12 light credentials band: white rounded cells on the grey page. Figures are approved in S11 (see the spec). -->
     <template id="s_dz_stats" name="Dataliza Stats">
-        <section class="s_dz_stats dz-dark pt48 pb48" data-snippet="s_dz_stats" data-name="Stats">
+        <section class="s_dz_stats pt48 pb48" data-snippet="s_dz_stats" data-name="Stats">
             <div class="container">
-                <p class="dz-label">Credenciales</p>
-                <div class="row g-0 mt-3">
-                    <div class="col-lg-4 s_dz_stats__col">
-                        <!-- Text/CSS badge on purpose: Odoo's logo image is a trademark and is not copied. -->
-                        <div class="dz-cell dz-marks s_dz_stats__badge">
+                <div class="dz-head">
+                    <h2 class="dz-title">Credenciales</h2>
+                    <p class="dz-head__intro">Cifras que respaldan nuestro trabajo como partner oficial de Odoo.</p>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12 col-xl-4">
+                        <!-- Text/CSS seal on purpose: Odoo's logo image is a trademark and is not copied. -->
+                        <div class="dz-card s_dz_stats__cell s_dz_stats__badge">
                             <span class="s_dz_stats__seal" aria-hidden="true"><span class="s_dz_stats__star">★</span></span>
                             <div>
                                 <p class="dz-label">Partner oficial</p>
@@ -16,32 +20,32 @@
                         </div>
                     </div>
                     <!-- Final values are the real text; the dz_stats interaction only animates them. -->
-                    <div class="col-6 col-lg-2 s_dz_stats__col">
-                        <div class="dz-cell dz-marks s_dz_stats__cell">
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <div class="dz-card s_dz_stats__cell">
                             <p class="s_dz_stats__num">50+</p>
                             <p class="s_dz_stats__label">empresas confían en nosotros</p>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-2 s_dz_stats__col">
-                        <div class="dz-cell dz-marks s_dz_stats__cell">
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <div class="dz-card s_dz_stats__cell">
                             <p class="s_dz_stats__num">84 %</p>
                             <p class="s_dz_stats__label">retención de clientes</p>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-2 s_dz_stats__col">
-                        <div class="dz-cell dz-marks s_dz_stats__cell">
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <div class="dz-card s_dz_stats__cell">
                             <p class="s_dz_stats__num">100+</p>
                             <p class="s_dz_stats__label">usuarios en un solo proyecto</p>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-2 s_dz_stats__col">
-                        <div class="dz-cell dz-marks s_dz_stats__cell">
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <div class="dz-card s_dz_stats__cell">
                             <p class="s_dz_stats__num">5+</p>
                             <p class="s_dz_stats__label">años implementando Odoo (desde 2020)</p>
                         </div>
                     </div>
                 </div>
-                <p class="dz-label mt-3">Oficinas en Tijuana y Guadalajara</p>
+                <p class="dz-chip mt-3">Oficinas en Tijuana y Guadalajara</p>
             </div>
         </section>
     </template>
