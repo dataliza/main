@@ -10,11 +10,17 @@
             <t t-snippet="theme_dataliza.s_dz_ascii_hero" string="ASCII Hero" group="dataliza">
                 <keywords>hero, intro, ascii, plasma, cyberpunk, terminal, dataliza, header, home</keywords>
             </t>
+            <t t-snippet="theme_dataliza.s_dz_stats" string="Stats" group="dataliza">
+                <keywords>stats, figures, numbers, credentials, partner, silver, odoo, counter, dataliza</keywords>
+            </t>
             <t t-snippet="theme_dataliza.s_dz_features" string="Features" group="dataliza">
                 <keywords>features, modules, erp, crm, mrp, grid, cells, dataliza, columns</keywords>
             </t>
             <t t-snippet="theme_dataliza.s_dz_steps" string="Steps" group="dataliza">
                 <keywords>steps, process, methodology, numbered, dataliza, timeline</keywords>
+            </t>
+            <t t-snippet="theme_dataliza.s_dz_trust" string="Trust" group="dataliza">
+                <keywords>trust, partner, silver, team, photo, about, image, dataliza</keywords>
             </t>
             <t t-snippet="theme_dataliza.s_dz_cta" string="Call to Action" group="dataliza">
                 <keywords>cta, call to action, contact, button, dataliza</keywords>

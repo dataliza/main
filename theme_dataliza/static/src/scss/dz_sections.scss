@@ -1,0 +1,227 @@
+// Home v2 sections: s_dz_stats, s_dz_features (images + industries), s_dz_trust.
+// Reuses the --dz-* tokens and dz- primitives from dataliza.scss. No rounded cards.
+
+$dz-neon-glow: 0 0 24px -6px rgba(0, 255, 102, .5);
+
+// ---- Shared: neon border on hover for cells with images / figures ----------
+.s_dz_stats,
+.s_dz_features {
+    .dz-cell {
+        transition: border-color .15s ease, box-shadow .25s ease;
+
+        &:hover {
+            z-index: 1;
+            box-shadow: $dz-neon-glow;
+        }
+    }
+}
+
+// ---- s_dz_stats ----------------------------------------------------------
+.s_dz_stats {
+    .s_dz_stats__col .dz-cell {
+        height: 100%;
+    }
+    .s_dz_stats__cell {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    // Count-up figure. tabular-nums keeps the width stable while the digits change.
+    .s_dz_stats__num {
+        margin: 0 0 .5rem;
+        font: 700 clamp(2rem, 3.4vw, 3rem)/1 var(--dz-mono);
+        font-variant-numeric: tabular-nums;
+        color: var(--dz-accent);
+        text-shadow: 0 0 14px rgba(0, 255, 102, .45);
+        white-space: nowrap;
+    }
+    .s_dz_stats__label {
+        margin: 0;
+        font: 500 .75rem/1.5 var(--dz-mono);
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: var(--dz-muted);
+    }
+
+    // "Odoo Silver Partner" badge: CSS only (hexagon seal + silver text)
+    .s_dz_stats__badge {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        height: 100%;
+
+        .dz-label {
+            margin-bottom: .5rem;
+        }
+    }
+    .s_dz_stats__seal {
+        position: relative;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        width: 3.5rem;
+        height: 4rem;
+        clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+        background: linear-gradient(135deg, #f4f4f5, #868991 50%, #d4d4d8);
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+            background: #0f0f10;
+        }
+    }
+    .s_dz_stats__star {
+        position: relative;
+        font-size: 1.25rem;
+        line-height: 1;
+        color: #d4d4d8;
+    }
+    .s_dz_stats__badge-title {
+        margin: 0;
+        font: 700 1.25rem/1.2 var(--dz-mono);
+        background: linear-gradient(90deg, #f4f4f5, #a1a1aa 55%, #e4e4e7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #e4e4e7;
+    }
+}
+
+// ---- s_dz_features (images, industries) -----------------------------------
+.s_dz_features {
+    .s_dz_features__col .dz-cell {
+        display: flex;
+        flex-direction: column; // (no overflow:hidden here: it would clip the "+" corner marks)
+    }
+    .s_dz_features__body {
+        flex: 1 1 auto;
+    }
+
+    // Image bleeds to the cell edges; zoom on hover
+    .s_dz_features__media {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 3 / 2;
+        margin: -1.5rem -1.5rem 1.25rem;
+        border-bottom: 1px solid var(--dz-line);
+        background: var(--dz-bg);
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(.8) brightness(.8);
+            transition: transform .6s ease, filter .3s ease;
+        }
+        // Green tint + scanlines so every photo reads as one dark-tech family
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(to bottom, rgba(0, 0, 0, .18) 0, rgba(0, 0, 0, .18) 1px, transparent 1px, transparent 3px),
+                linear-gradient(to top, rgba(0, 255, 102, .14), transparent 55%);
+        }
+    }
+    .dz-cell:hover .s_dz_features__media img {
+        transform: scale(1.06);
+        filter: saturate(1) brightness(1);
+    }
+
+    .s_dz_features__industry {
+        display: flex;
+        align-items: center;
+        min-height: 4.5rem;
+        padding: 1rem;
+
+        p {
+            margin: 0;
+            font: 500 .75rem/1.4 var(--dz-mono);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--dz-text);
+        }
+    }
+}
+
+// ---- s_dz_trust ----------------------------------------------------------
+.s_dz_trust {
+    .s_dz_trust__frame {
+        position: relative;
+        border: 1px solid var(--dz-line);
+        padding-bottom: 2.5rem; // room for the inset photo
+
+        &:hover {
+            border-color: var(--dz-accent);
+            box-shadow: $dz-neon-glow;
+        }
+    }
+    .s_dz_trust__photo {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: saturate(.85) brightness(.85);
+    }
+    .s_dz_trust__inset {
+        position: absolute;
+        right: -1px;
+        bottom: -1px;
+        width: 42%;
+        height: auto;
+        border: 1px solid var(--dz-accent);
+        box-shadow: 0 0 0 6px var(--dz-bg);
+    }
+    .s_dz_trust__list {
+        padding: 0;
+        margin: 1.5rem 0;
+
+        li {
+            padding: .5rem 0;
+            border-bottom: 1px solid var(--dz-line);
+            font: 500 .8125rem/1.4 var(--dz-mono);
+            letter-spacing: .04em;
+            color: var(--dz-text);
+
+            &::before {
+                content: '+';
+                margin-right: .75rem;
+                color: var(--dz-accent);
+            }
+        }
+    }
+
+    // Scroll reveal: only hidden once the dz_reveal interaction marked the section as ready
+    // (never in the editor, with reduced motion, or without JS).
+    &.dz-reveal-ready .s_dz_trust__reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity .7s ease, transform .7s ease;
+    }
+    &.dz-reveal-ready .s_dz_trust__reveal--text {
+        transition-delay: .15s;
+    }
+    &.dz-reveal-ready.dz-in .s_dz_trust__reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .s_dz_features .s_dz_features__media img,
+    .s_dz_features .dz-cell,
+    .s_dz_stats .dz-cell,
+    .s_dz_trust .s_dz_trust__reveal {
+        transition: none !important;
+    }
+    .s_dz_features .dz-cell:hover .s_dz_features__media img {
+        transform: none;
+    }
+    .s_dz_trust.dz-reveal-ready .s_dz_trust__reveal {
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -37,9 +37,13 @@
     .top_menu > .nav-item > .nav-link {
         box-shadow: inset 0 -2px 0 transparent;
 
-        &:hover,
-        &.active {
+        &:hover {
             box-shadow: inset 0 -2px 0 var(--dz-accent);
+        }
+        // Active page: lit like a neon tube (neon text + glowing underline)
+        &.active {
+            text-shadow: 0 0 8px rgba(0, 255, 102, .65), 0 0 18px rgba(0, 255, 102, .35);
+            box-shadow: inset 0 -2px 0 var(--dz-accent), 0 8px 14px -8px rgba(0, 255, 102, .85);
         }
     }
 
@@ -51,11 +55,15 @@
         background-color: var(--dz-accent);
         border-color: var(--dz-accent);
         color: #000;
+        // Neon glow
+        box-shadow: 0 0 24px -4px rgba(0, 255, 102, .45);
+        transition: box-shadow .2s ease, background-color .15s ease, color .15s ease;
 
         &:hover,
         &:focus-visible {
             background-color: transparent;
             color: var(--dz-accent);
+            box-shadow: 0 0 32px -2px rgba(0, 255, 102, .8), inset 0 0 12px -4px rgba(0, 255, 102, .6);
         }
     }
 

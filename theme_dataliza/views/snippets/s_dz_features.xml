@@ -3,38 +3,87 @@
     <template id="s_dz_features" name="Dataliza Features">
         <section class="s_dz_features dz-dark pt64 pb64" data-snippet="s_dz_features" data-name="Features">
             <div class="container">
-                <p class="dz-label">Módulos</p>
-                <div class="row g-0 mt-3">
+                <div class="row">
+                    <div class="col-lg-8 pb32">
+                        <p class="dz-label">Módulos</p>
+                        <h2>Los módulos de Odoo que implementamos</h2>
+                        <p class="lead">Como Odoo Silver Partner, implementamos los módulos que tu empresa necesita.</p>
+                    </div>
+                </div>
+                <div class="row g-0">
                     <div class="col-md-6 col-lg-3 s_dz_features__col">
                         <div class="dz-cell dz-marks h-100">
-                            <p class="dz-label">MOD_01</p>
-                            <h3>Sistema ERP</h3>
-                            <p>odoo es un sistema ERP (Enterprise Resource Planning o Planificación de Recursos Empresariales) de código abierto que proporciona una suite integrada de aplicaciones empresariales. Su enfoque modular permite a las empresas seleccionar y personalizar módulos según sus necesidades específicas.</p>
+                            <div class="s_dz_features__media">
+                                <img src="/theme_dataliza/static/src/img/dz/dz-mod-erp-servidores.webp" alt="Servidores en un centro de datos" loading="lazy" width="900" height="600"/>
+                            </div>
+                            <div class="s_dz_features__body">
+                                <p class="dz-label">MOD_01</p>
+                                <h3>Sistema ERP</h3>
+                                <p>Suite integrada de aplicaciones empresariales de código abierto. Su enfoque modular te permite seleccionar y personalizar los módulos según tus necesidades.</p>
+                            </div>
                             <a href="/sistema-erp" class="dz-label">Descubre más →</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 s_dz_features__col">
                         <div class="dz-cell dz-marks h-100">
-                            <p class="dz-label">MOD_02</p>
-                            <h3>Sistema CRM</h3>
-                            <p>El módulo de CRM (Customer Relationship Management o Gestión de Relaciones con el Cliente) en odoo es una herramienta integral diseñada para ayudar a las empresas a gestionar y mejorar sus interacciones con clientes y clientes potenciales.</p>
+                            <div class="s_dz_features__media">
+                                <img src="/theme_dataliza/static/src/img/dz/dz-mod-crm-datos.webp" alt="Código y datos proyectados sobre una persona" loading="lazy" width="900" height="600"/>
+                            </div>
+                            <div class="s_dz_features__body">
+                                <p class="dz-label">MOD_02</p>
+                                <h3>Sistema CRM</h3>
+                                <p>Gestiona y mejora tus interacciones con clientes y clientes potenciales desde una herramienta integral.</p>
+                            </div>
                             <a href="/sistema-erp" class="dz-label">Descubre más →</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 s_dz_features__col">
                         <div class="dz-cell dz-marks h-100">
-                            <p class="dz-label">MOD_03</p>
-                            <h3>Tienda en línea</h3>
-                            <p>odoo cuenta con un módulo de comercio electrónico (eCommerce) que permite a las empresas crear y gestionar tiendas en línea de manera integrada con otros aspectos de su sistema de gestión empresarial.</p>
+                            <div class="s_dz_features__media">
+                                <img src="/theme_dataliza/static/src/img/dz/dz-mod-tienda-codigo.webp" alt="Código en la pantalla de una computadora portátil" loading="lazy" width="900" height="600"/>
+                            </div>
+                            <div class="s_dz_features__body">
+                                <p class="dz-label">MOD_03</p>
+                                <h3>Tienda en línea</h3>
+                                <p>Crea y gestiona tu tienda en línea, integrada con el resto de tu sistema de gestión empresarial.</p>
+                            </div>
                             <a href="/sistema-erp" class="dz-label">Descubre más →</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 s_dz_features__col">
                         <div class="dz-cell dz-marks h-100">
-                            <p class="dz-label">MOD_04</p>
-                            <h3>MRP</h3>
-                            <p>Se ocupa de la planificación y gestión de los procesos de fabricación en una empresa. El módulo MRP de odoo permite a las empresas planificar, programar y controlar la producción de manera eficiente.</p>
+                            <div class="s_dz_features__media">
+                                <img src="/theme_dataliza/static/src/img/dz/dz-mod-mrp-circuito.webp" alt="Placa de circuitos de una computadora" loading="lazy" width="900" height="600"/>
+                            </div>
+                            <div class="s_dz_features__body">
+                                <p class="dz-label">MOD_04</p>
+                                <h3>MRP</h3>
+                                <p>Planifica, programa y controla la producción de manera eficiente.</p>
+                            </div>
                             <a href="/sistema-erp" class="dz-label">Descubre más →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="s_dz_features__industries pt48">
+                    <p class="dz-label">Industrias que atendemos</p>
+                    <div class="row g-0 mt-3">
+                        <div class="col-6 col-md-4 col-lg-2 s_dz_features__col">
+                            <div class="dz-cell s_dz_features__industry"><p>Manufactura</p></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2 s_dz_features__col">
+                            <div class="dz-cell s_dz_features__industry"><p>Alimentos y hospitalidad</p></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2 s_dz_features__col">
+                            <div class="dz-cell s_dz_features__industry"><p>Comercio mayorista y minorista</p></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2 s_dz_features__col">
+                            <div class="dz-cell s_dz_features__industry"><p>Servicios</p></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2 s_dz_features__col">
+                            <div class="dz-cell s_dz_features__industry"><p>Construcción</p></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2 s_dz_features__col">
+                            <div class="dz-cell s_dz_features__industry"><p>Salud</p></div>
                         </div>
                     </div>
                 </div>

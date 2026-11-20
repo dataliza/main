@@ -18,6 +18,14 @@
     }
     .btn-primary {
         color: #000;
+        // Neon glow, stronger on hover
+        box-shadow: 0 0 24px -4px rgba(0, 255, 102, .45);
+        transition: box-shadow .2s ease, background-color .15s ease, color .15s ease;
+
+        &:hover,
+        &:focus-visible {
+            box-shadow: 0 0 34px -2px rgba(0, 255, 102, .8), 0 0 10px rgba(0, 255, 102, .35);
+        }
     }
     .btn-outline-secondary {
         color: var(--dz-text);
@@ -61,12 +69,42 @@
             radial-gradient(ellipse at 30% 50%, rgba(10, 10, 10, .7) 0%, rgba(10, 10, 10, 0) 70%);
     }
 
+    // Neon title: glow stays soft so the white text remains readable over the plasma
+    h1 {
+        text-shadow:
+            0 0 6px rgba(0, 255, 102, .5),
+            0 0 22px rgba(0, 255, 102, .35),
+            0 0 48px rgba(0, 255, 102, .2);
+        animation: dz-neon-pulse 4s ease-in-out infinite alternate;
+    }
+
     // Heading, text and buttons stay in the DOM, above the canvas
     .s_dz_ascii_hero__content {
         position: relative;
         z-index: 2;
         max-width: 56rem;
     }
+}
+
+@keyframes dz-neon-pulse {
+    from {
+        text-shadow:
+            0 0 5px rgba(0, 255, 102, .4),
+            0 0 18px rgba(0, 255, 102, .25),
+            0 0 40px rgba(0, 255, 102, .12);
+    }
+    to {
+        text-shadow:
+            0 0 8px rgba(0, 255, 102, .6),
+            0 0 26px rgba(0, 255, 102, .42),
+            0 0 56px rgba(0, 255, 102, .26);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    // Static glow, no pulse and no glow transitions
+    .s_dz_ascii_hero h1 { animation: none; }
+    .dz-dark .btn-primary { transition: none; }
 }
 
 // ---- s_dz_features / s_dz_steps / s_dz_cta ---------------------------------

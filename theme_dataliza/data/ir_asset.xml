@@ -31,4 +31,22 @@
         <field name="bundle">web.assets_frontend</field>
         <field name="path">theme_dataliza/static/src/interactions/ascii_hero.js</field>
     </record>
+    <record id="sections_scss" model="theme.ir.asset">
+        <field name="key">theme_dataliza.sections_scss</field>
+        <field name="name">Dataliza home sections SCSS (stats, features, trust)</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/scss/dz_sections.scss</field>
+    </record>
+    <record id="dz_stats_js" model="theme.ir.asset">
+        <field name="key">theme_dataliza.dz_stats_js</field>
+        <field name="name">Dataliza stats count-up interaction</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/interactions/dz_stats.js</field>
+    </record>
+    <record id="dz_reveal_js" model="theme.ir.asset">
+        <field name="key">theme_dataliza.dz_reveal_js</field>
+        <field name="name">Dataliza scroll reveal interaction</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/interactions/dz_reveal.js</field>
+    </record>
 </odoo>
