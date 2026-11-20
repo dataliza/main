@@ -3,19 +3,21 @@ import { registry } from "@web/core/registry";
 
 // ASCII plasma for the s_dz_ascii_hero snippet (S12: a very faint layer inside the black hero card).
 // Decorative only: the wordmark, text and buttons live in the DOM above the canvas, nothing readable
-// is ever drawn in it. Muted white/grey-green glyphs, no glow, no scanlines.
+// is ever drawn in it. Green phosphor glyphs with a soft glow on the brightest cores.
 
 const RAMP = [".", ":", "-", "=", "+", "*", "#", "@"];
-const TINT = "196, 214, 196"; // muted white / grey-green
+const TINT = "0, 255, 102"; // phosphor green (#00FF66), only used inside the hero canvas
+const GLOW_FROM = 5; // ramp index from which glyphs get the soft bloom
+const GLOW_BLUR = 8; // css px
 const CELL_W = 10; // css px per glyph cell
 const CELL_H = 16;
 const FONT_SIZE = 13;
 const FONT_FAMILY = "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace";
 const FRAME_MS = 1000 / 30; // cap at ~30fps
 const STATIC_TIME = 2.4; // time used for the single reduced-motion frame
-const MIN_ALPHA = 0.03;
-const MAX_ALPHA = 0.14; // very faint: the wordmark and text must stay crisp on top
-const TIME_SCALE = 0.45; // slow drift
+const MIN_ALPHA = 0.08;
+const MAX_ALPHA = 0.62; // visible, but below 1 so the white wordmark and text stay crisp on top
+const TIME_SCALE = 0.8; // calm but clearly alive
 
 export class AsciiHero extends Interaction {
     static selector = ".s_dz_ascii_hero";
@@ -208,6 +210,12 @@ export class AsciiHero extends Interaction {
         for (let level = 0; level <= top; level++) {
             const alpha = MIN_ALPHA + (level / top) * (MAX_ALPHA - MIN_ALPHA);
             ctx.fillStyle = `rgba(${TINT}, ${alpha.toFixed(3)})`;
+            if (level >= GLOW_FROM) {
+                ctx.shadowColor = `rgba(${TINT}, 0.55)`;
+                ctx.shadowBlur = GLOW_BLUR;
+            } else {
+                ctx.shadowBlur = 0;
+            }
             const glyph = RAMP[level];
             for (let row = 0; row < rows; row++) {
                 for (let col = 0; col < cols; col++) {
@@ -217,6 +225,7 @@ export class AsciiHero extends Interaction {
                 }
             }
         }
+        ctx.shadowBlur = 0;
     }
 }
 
