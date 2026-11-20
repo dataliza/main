@@ -12,11 +12,11 @@ $o-color-palettes: map-merge($o-color-palettes, (
 $o-theme-font-configs: map-merge($o-theme-font-configs, (
     'JetBrains Mono': (
         'family': ('JetBrains Mono', monospace),
-        'url': 'JetBrains+Mono:wght@400;500;700',
+        'url': 'JetBrains+Mono:400,500,700',
     ),
     'IBM Plex Sans': (
         'family': ('IBM Plex Sans', sans-serif),
-        'url': 'IBM+Plex+Sans:wght@400;500;600',
+        'url': 'IBM+Plex+Sans:400,500,600',
     ),
 ));
 
