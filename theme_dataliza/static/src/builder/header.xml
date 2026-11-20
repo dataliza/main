@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<!-- Adds the Dataliza header to the editor's Header > Template select (Odoo 19 html_builder). -->
+<t t-name="theme_dataliza.HeaderTemplateOption" t-inherit="website.HeaderTemplateOption" t-inherit-mode="extension">
+    <xpath expr="//BuilderSelect[@action=&quot;'reloadComposite'&quot;]" position="inside">
+        <BuilderSelectItem
+            id="'header_dataliza_opt'"
+            title.translate="Dataliza"
+            actionParam="[
+                {
+                    action: 'websiteConfig',
+                    actionParam: {
+                        views: ['theme_dataliza.template_header_dataliza'],
+                        vars: { 'header-template': 'dataliza' },
+                        checkVars: false,
+                    },
+                },
+            ]"
+        >
+            <Img attrs="{ style: 'width: calc(100% - 0.5rem);' }" src="'/theme_dataliza/static/src/img/header_template_dataliza.svg'"/>
+        </BuilderSelectItem>
+    </xpath>
+</t>
+
+</templates>

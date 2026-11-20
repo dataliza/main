@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Registers the Dataliza snippets in the Odoo 19 editor panel under their own "Dataliza" group. -->
+    <template id="snippets" inherit_id="website.snippets" name="Dataliza Snippets">
+        <xpath expr="//t[@id='installed_snippets_hook']" position="after">
+            <t snippet-group="dataliza" t-snippet="website.s_snippet_group" string="Dataliza"
+                t-thumbnail="/website/static/src/img/snippets_thumbs/s_cover.svg"/>
+        </xpath>
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="theme_dataliza.s_dz_ascii_hero" string="ASCII Hero" group="dataliza">
+                <keywords>hero, intro, ascii, plasma, cyberpunk, terminal, dataliza, header, home</keywords>
+            </t>
+            <t t-snippet="theme_dataliza.s_dz_features" string="Features" group="dataliza">
+                <keywords>features, modules, erp, crm, mrp, grid, cells, dataliza, columns</keywords>
+            </t>
+            <t t-snippet="theme_dataliza.s_dz_steps" string="Steps" group="dataliza">
+                <keywords>steps, process, methodology, numbered, dataliza, timeline</keywords>
+            </t>
+            <t t-snippet="theme_dataliza.s_dz_cta" string="Call to Action" group="dataliza">
+                <keywords>cta, call to action, contact, button, dataliza</keywords>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_dz_ascii_hero" name="Dataliza ASCII Hero">
+        <section class="s_dz_ascii_hero dz-dark pt96 pb96" data-snippet="s_dz_ascii_hero" data-name="ASCII Hero">
+            <!-- Decorative ASCII plasma, drawn by the theme_dataliza.ascii_hero interaction. Never holds text. -->
+            <canvas class="s_dz_ascii_hero__canvas o_not_editable" aria-hidden="true" contenteditable="false"/>
+            <div class="container s_allow_columns s_dz_ascii_hero__content">
+                <p class="dz-label">dataliza · Business Intelligence</p>
+                <h1 class="display-2 dz-cursor">decide con datos</h1>
+                <p class="lead">Integramos a tu empresa odoo ERP, que te ayudará a conocer la información más relevante de tu negocio de manera clara y eficaz, ayudándote a tomar mejores decisiones.</p>
+                <p>
+                    <a href="/contactanos" class="btn btn-lg btn-primary mb-2">Contáctanos</a>
+                    <a href="/soluciones" class="btn btn-lg btn-outline-secondary mb-2">Soluciones</a>
+                </p>
+            </div>
+        </section>
+    </template>
+</odoo>

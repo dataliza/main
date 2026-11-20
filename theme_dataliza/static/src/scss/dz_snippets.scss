@@ -1,0 +1,102 @@
+// Dataliza snippets: s_dz_ascii_hero, s_dz_features, s_dz_steps, s_dz_cta.
+// They reuse the dz- primitives (.dz-dark, .dz-cell, .dz-marks, .dz-label, .dz-num, .dz-cursor)
+// from dataliza.scss; no rounded cards, hover border goes neon (.dz-cell:hover).
+
+// Shared: headings/links inside a dark Dataliza surface must not pick the light theme colours.
+.dz-dark {
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--dz-text);
+    }
+    p {
+        color: var(--dz-muted);
+    }
+    .lead {
+        color: var(--dz-text);
+    }
+    a:not(.btn) {
+        color: var(--dz-accent);
+    }
+    .btn-primary {
+        color: #000;
+    }
+    .btn-outline-secondary {
+        color: var(--dz-text);
+        border-color: var(--dz-line-strong);
+
+        &:hover {
+            color: #000;
+            background-color: var(--dz-accent);
+            border-color: var(--dz-accent);
+        }
+    }
+}
+
+// ---- s_dz_ascii_hero ------------------------------------------------------
+.s_dz_ascii_hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: var(--dz-bg);
+
+    // Plasma canvas: decorative layer behind the content
+    .s_dz_ascii_hero__canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    // Subtle scanlines + readability vignette over the canvas
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+            repeating-linear-gradient(to bottom, rgba(0, 0, 0, .22) 0, rgba(0, 0, 0, .22) 1px, transparent 1px, transparent 3px),
+            radial-gradient(ellipse at 30% 50%, rgba(10, 10, 10, .7) 0%, rgba(10, 10, 10, 0) 70%);
+    }
+
+    // Heading, text and buttons stay in the DOM, above the canvas
+    .s_dz_ascii_hero__content {
+        position: relative;
+        z-index: 2;
+        max-width: 56rem;
+    }
+}
+
+// ---- s_dz_features / s_dz_steps / s_dz_cta ---------------------------------
+.s_dz_features,
+.s_dz_steps,
+.s_dz_cta {
+    .dz-cell {
+        height: 100%;
+    }
+    .dz-cell h3 {
+        font-size: 1.25rem;
+        margin: .75rem 0;
+    }
+}
+
+.s_dz_features .dz-cell {
+    display: flex;
+    flex-direction: column;
+
+    // "Descubre más" link sticks to the bottom of the cell
+    > a {
+        margin-top: auto;
+    }
+}
+
+.s_dz_steps .dz-num {
+    margin-bottom: .5rem;
+    color: var(--dz-accent);
+}
+
+.s_dz_cta .s_dz_cta__box {
+    padding: 3rem 1.5rem;
+}

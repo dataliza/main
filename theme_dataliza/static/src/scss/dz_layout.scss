@@ -1,0 +1,141 @@
+// Dataliza header + footer (views/header.xml, views/footer.xml). Uses the --dz-* tokens and the
+// dz- primitives from dataliza.scss. All rules are scoped to .dz-header / .dz-footer, so other
+// header/footer templates are untouched.
+
+// ---- Header ---------------------------------------------------------------
+.navbar.dz-header,
+.navbar.dz-header.o_cc {
+    background-color: var(--dz-bg);
+    color: var(--dz-text);
+    border-bottom: 1px solid var(--dz-line);
+    box-shadow: none;
+
+    .dz-brand {
+        font: 700 1.25rem/1 var(--dz-mono);
+        letter-spacing: -.02em;
+        text-transform: lowercase;
+        color: var(--dz-text);
+        text-decoration: none;
+    }
+
+    .nav-link {
+        font: 500 .75rem/1 var(--dz-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--dz-muted);
+        border-radius: 0;
+        transition: color .15s ease, box-shadow .15s ease;
+
+        &:hover,
+        &:focus-visible,
+        &.active {
+            color: var(--dz-accent);
+        }
+    }
+
+    // Underline marker on the desktop navigation only
+    .top_menu > .nav-item > .nav-link {
+        box-shadow: inset 0 -2px 0 transparent;
+
+        &:hover,
+        &.active {
+            box-shadow: inset 0 -2px 0 var(--dz-accent);
+        }
+    }
+
+    .dz-header__cta {
+        font: 700 .75rem/1 var(--dz-mono);
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        border-radius: 0;
+        background-color: var(--dz-accent);
+        border-color: var(--dz-accent);
+        color: #000;
+
+        &:hover,
+        &:focus-visible {
+            background-color: transparent;
+            color: var(--dz-accent);
+        }
+    }
+
+    .dz-header__toggler,
+    .navbar-toggler {
+        color: var(--dz-text);
+        border-color: var(--dz-line-strong);
+        border-radius: 0;
+    }
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+
+    .dropdown-menu {
+        background-color: var(--dz-bg-cell);
+        border: 1px solid var(--dz-line);
+        border-radius: 0;
+
+        .dropdown-item {
+            font: 500 .75rem/1.4 var(--dz-mono);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--dz-muted);
+
+            &:hover,
+            &:focus {
+                background-color: transparent;
+                color: var(--dz-accent);
+            }
+        }
+    }
+
+    // Mobile offcanvas
+    .offcanvas {
+        background-color: var(--dz-bg);
+        color: var(--dz-text);
+        border-left: 1px solid var(--dz-line);
+
+        .nav-item {
+            border-color: var(--dz-line) !important;
+        }
+        .btn-close {
+            filter: invert(1);
+        }
+    }
+}
+
+// ---- Footer ---------------------------------------------------------------
+.dz-footer {
+    border-top: 1px solid var(--dz-line);
+
+    // .dz-dark also colours links neon; footer links stay muted until hover
+    &.dz-dark a:not(.btn) {
+        font: 400 .875rem/1.9 var(--dz-mono);
+        color: var(--dz-muted);
+        text-decoration: none;
+        transition: color .15s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--dz-accent);
+        }
+    }
+
+    .dz-footer__brand {
+        font: 700 1.75rem/1 var(--dz-mono);
+        letter-spacing: -.02em;
+        color: var(--dz-text);
+        margin-bottom: .75rem;
+    }
+    .dz-footer__tagline {
+        color: var(--dz-muted);
+        margin-top: .75rem;
+    }
+    .dz-footer__title {
+        margin-bottom: 1rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid var(--dz-line);
+    }
+    ul {
+        margin: 0;
+    }
+}

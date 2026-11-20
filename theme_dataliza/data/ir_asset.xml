@@ -13,4 +13,22 @@
         <field name="bundle">web.assets_frontend</field>
         <field name="path">theme_dataliza/static/src/scss/dataliza.scss</field>
     </record>
+    <record id="layout_scss" model="theme.ir.asset">
+        <field name="key">theme_dataliza.layout_scss</field>
+        <field name="name">Dataliza header and footer SCSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/scss/dz_layout.scss</field>
+    </record>
+    <record id="snippets_scss" model="theme.ir.asset">
+        <field name="key">theme_dataliza.snippets_scss</field>
+        <field name="name">Dataliza snippets SCSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/scss/dz_snippets.scss</field>
+    </record>
+    <record id="ascii_hero_js" model="theme.ir.asset">
+        <field name="key">theme_dataliza.ascii_hero_js</field>
+        <field name="name">Dataliza ASCII hero interaction</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">theme_dataliza/static/src/interactions/ascii_hero.js</field>
+    </record>
 </odoo>

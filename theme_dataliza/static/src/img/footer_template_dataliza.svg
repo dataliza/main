@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+  <rect width="120" height="60" fill="#0a0a0a"/>
+  <rect x="0.5" y="0.5" width="119" height="59" fill="none" stroke="#262626"/>
+  <text x="8" y="16" font-family="monospace" font-size="8" font-weight="700" fill="#f5f5f5">dataliza</text>
+  <rect x="44" y="10" width="4" height="4" fill="#5cb531"/>
+  <g fill="#3f3f46">
+    <rect x="50" y="10" width="14" height="2"/><rect x="50" y="16" width="14" height="2"/><rect x="50" y="22" width="14" height="2"/>
+    <rect x="70" y="10" width="14" height="2"/><rect x="70" y="16" width="14" height="2"/><rect x="70" y="22" width="14" height="2"/>
+    <rect x="90" y="10" width="14" height="2"/><rect x="90" y="16" width="14" height="2"/>
+  </g>
+  <rect x="8" y="46" width="104" height="1" fill="#262626"/>
+  <rect x="8" y="50" width="40" height="2" fill="#a1a1aa"/>
+</svg>

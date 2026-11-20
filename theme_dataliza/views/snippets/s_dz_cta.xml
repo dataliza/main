@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_dz_cta" name="Dataliza Call to Action">
+        <section class="s_dz_cta dz-dark pt96 pb96" data-snippet="s_dz_cta" data-name="Call to Action">
+            <div class="container">
+                <div class="dz-cell dz-marks s_dz_cta__box text-center">
+                    <p class="dz-label">Siguiente paso</p>
+                    <h2 class="dz-cursor">Atrévete a dar el paso a la transformación digital</h2>
+                    <p class="lead">Implementamos tu sistema odoo ERP</p>
+                    <p>
+                        <a href="/contactanos" class="btn btn-lg btn-primary">Contáctanos</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>

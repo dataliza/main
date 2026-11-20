@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_dz_features" name="Dataliza Features">
+        <section class="s_dz_features dz-dark pt64 pb64" data-snippet="s_dz_features" data-name="Features">
+            <div class="container">
+                <p class="dz-label">Módulos</p>
+                <div class="row g-0 mt-3">
+                    <div class="col-md-6 col-lg-3 s_dz_features__col">
+                        <div class="dz-cell dz-marks h-100">
+                            <p class="dz-label">MOD_01</p>
+                            <h3>Sistema ERP</h3>
+                            <p>odoo es un sistema ERP (Enterprise Resource Planning o Planificación de Recursos Empresariales) de código abierto que proporciona una suite integrada de aplicaciones empresariales. Su enfoque modular permite a las empresas seleccionar y personalizar módulos según sus necesidades específicas.</p>
+                            <a href="/sistema-erp" class="dz-label">Descubre más →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 s_dz_features__col">
+                        <div class="dz-cell dz-marks h-100">
+                            <p class="dz-label">MOD_02</p>
+                            <h3>Sistema CRM</h3>
+                            <p>El módulo de CRM (Customer Relationship Management o Gestión de Relaciones con el Cliente) en odoo es una herramienta integral diseñada para ayudar a las empresas a gestionar y mejorar sus interacciones con clientes y clientes potenciales.</p>
+                            <a href="/sistema-erp" class="dz-label">Descubre más →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 s_dz_features__col">
+                        <div class="dz-cell dz-marks h-100">
+                            <p class="dz-label">MOD_03</p>
+                            <h3>Tienda en línea</h3>
+                            <p>odoo cuenta con un módulo de comercio electrónico (eCommerce) que permite a las empresas crear y gestionar tiendas en línea de manera integrada con otros aspectos de su sistema de gestión empresarial.</p>
+                            <a href="/sistema-erp" class="dz-label">Descubre más →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 s_dz_features__col">
+                        <div class="dz-cell dz-marks h-100">
+                            <p class="dz-label">MOD_04</p>
+                            <h3>MRP</h3>
+                            <p>Se ocupa de la planificación y gestión de los procesos de fabricación en una empresa. El módulo MRP de odoo permite a las empresas planificar, programar y controlar la producción de manera eficiente.</p>
+                            <a href="/sistema-erp" class="dz-label">Descubre más →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>

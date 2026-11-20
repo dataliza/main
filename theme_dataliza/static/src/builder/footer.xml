@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<!-- Adds the Dataliza footer to the editor's Footer > Template select (Odoo 19 html_builder). -->
+<t t-name="theme_dataliza.FooterTemplateOption" t-inherit="website.FooterTemplateOption" t-inherit-mode="extension">
+    <xpath expr="//BuilderSelect[@action=&quot;'websiteConfigFooter'&quot;]" position="inside">
+        <BuilderSelectItem title.translate="Dataliza"
+            actionParam="{ view: 'theme_dataliza.template_footer_dataliza', vars: { 'footer-template': 'dataliza' } }"
+        >
+            <Img attrs="{ style: 'width: 100%;' }" src="'/theme_dataliza/static/src/img/footer_template_dataliza.svg'"/>
+        </BuilderSelectItem>
+    </xpath>
+</t>
+
+</templates>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Dataliza footer. Shipped inactive: selected from the website editor (Footer > Template >
+        Dataliza), which deactivates the other footer templates. Copyright strip is Odoo's own
+        (o_footer_copyright), outside #footer, so no year is hard-coded here.
+        The editor option lives in static/src/builder/footer.xml.
+    -->
+    <template id="template_footer_dataliza" inherit_id="website.layout" name="Template Footer Dataliza" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo text-break dz-footer dz-dark" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block dz-footer__section pt48 pb32" data-snippet="s_text_block" data-name="Footer Dataliza">
+                    <div class="container">
+                        <div class="row g-4">
+                            <div class="col-lg-4">
+                                <p class="dz-footer__brand dz-cursor">dataliza</p>
+                                <p class="dz-label">Business Intelligence</p>
+                                <p class="dz-footer__tagline">decide con datos, decide dataliza.</p>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <h5 class="dz-label dz-footer__title">01 / Soluciones</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/soluciones">Soluciones</a></li>
+                                    <li><a href="/sistema-de-nomina">Sistema de nómina</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <h5 class="dz-label dz-footer__title">02 / Sistema ERP</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/sistema-erp">ERP</a></li>
+                                    <li><a href="/sistema-erp">CRM</a></li>
+                                    <li><a href="/sistema-erp">Tienda en línea</a></li>
+                                    <li><a href="/sistema-erp">MRP</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <h5 class="dz-label dz-footer__title">03 / Empresa &amp; Legal</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/blog">Blog</a></li>
+                                    <li><a href="/aviso-de-privacidad">Aviso de privacidad</a></li>
+                                    <li><a href="/terms">Términos y condiciones</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <h5 class="dz-label dz-footer__title">04 / Contacto</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="/contactanos">Contáctanos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+</odoo>
