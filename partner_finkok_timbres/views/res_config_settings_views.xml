@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_finkok_timbres" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.partner.finkok.timbres</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Finkok Timbres" string="Finkok Timbres"
+                     name="partner_finkok_timbres"
+                     data-key="partner_finkok_timbres"
+                     groups="base.group_system">
+                    <block title="Finkok — Utilerías" name="finkok_utilities_block">
+                        <setting string="Credenciales Finkok"
+                                 help="Usuario y contraseña de la cuenta de socio para report_total.">
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="finkok_username"
+                                           string="Usuario"
+                                           class="col-lg-3 o_light_label"/>
+                                    <field name="finkok_username" class="oe_inline"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="finkok_password"
+                                           string="Contraseña"
+                                           class="col-lg-3 o_light_label"/>
+                                    <field name="finkok_password"
+                                           password="True"
+                                           class="oe_inline"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="finkok_environment"
+                                           string="Entorno"
+                                           class="col-lg-3 o_light_label"/>
+                                    <field name="finkok_environment" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

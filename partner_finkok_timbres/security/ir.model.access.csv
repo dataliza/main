@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_finkok_rfc_user,partner.finkok.rfc.user,model_partner_finkok_rfc,base.group_user,1,1,1,1
+access_partner_finkok_timbre_history_user,partner.finkok.timbre.history.user,model_partner_finkok_timbre_history,base.group_user,1,1,1,1
+access_partner_finkok_timbre_wizard_user,partner.finkok.timbre.wizard.user,model_partner_finkok_timbre_wizard,base.group_user,1,1,1,1
